@@ -1,0 +1,5 @@
+# source are useful if the gem do not come from a git repository
+# source 'https://rubygems.org'
+gem 'codemodels',    :github => 'ftomassetti/codemodels'
+gem 'codemodels-js', :github => 'ftomassetti/codemodels-js'
+gem 'codemodels-html', :github => 'ftomassetti/codemodels-html'
