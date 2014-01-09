@@ -19,5 +19,17 @@ def test_models_loading
     assert models.has_key?('/wordSearchPuzzle.js')
 end
 
+def test_features_calc
+    dir = './test/data/angular_puzzle'
+    spotter = CrossLanguageSpotter::Spotter.new()
+    spotter.features_for_dir(dir)
+end
+
+def test_oracle
+    dir = './test/data/angular_puzzle'
+    oracle_loader = OracleLoader.new
+    oracle_loader.to_train_data(dir,'./test/data/angular-puzzle.GS')
+end
+
 
 end
