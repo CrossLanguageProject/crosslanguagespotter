@@ -22,15 +22,13 @@ end
 def test_features_calc
     dir = './test/data/angular_puzzle'
     spotter = CrossLanguageSpotter::Spotter.new()
-    #spotter.features_for_dir(dir)
-    puts "DISABLED!"
+    spotter.features_for_dir(dir)
 end
 
 def test_oracle
     dir = './test/data/angular_puzzle'
     oracle_loader = OracleLoader.new
-    #oracle_loader.to_train_data(dir,'./test/data/angular-puzzle.GS')
-    puts "DISABLED!"
+    oracle_loader.to_train_data(dir,'./test/data/angular-puzzle.GS')
 end
 
 def test_full_behavior
@@ -39,7 +37,6 @@ def test_full_behavior
     spotter = CrossLanguageSpotter::Spotter.new()
     project = Project.new('./test/data/services')
     results = spotter.classify_relations(project,classifier)
-    puts results
 end
 
 end
