@@ -49,6 +49,37 @@ module CrossLanguageSpotter
             return features_for_project(project)
         end
 
+        def classify_relations(project,classifier)
+            features_data = features_for_project(project)
+            data = []
+            list_of_original_features_rows = []
+            features_data.each do |rel,row|
+                row[:result] = false
+                data.push(row)
+                list_of_original_features_rows.push(row)
+            end
+            keys = {shared_length: :numeric,
+                tfidf_shared: :numeric,itfidf_shared: :numeric,
+                perc_shared_length_min: :numeric,
+                perc_shared_length_max: :numeric,
+                diff_min: :numeric,diff_max: :numeric,
+                perc_diff_min: :numeric,perc_diff_max: :numeric,
+                context: :numeric,jaccard: :numeric,jaro: :numeric,tversky: :numeric,
+                result: :boolean}
+            data_instances = hash2weka_instances("data",data,keys,:result)
+            classifier.classify(data_instances)
+            i=0
+            results = []
+            data_instances.enumerate_instances.each do |instance|
+                result = instance.value(instance.class_attribute)
+                if result>0
+                    results.push(list_of_original_features_rows[i])
+                end
+                i+=1
+            end
+            return results
+        end
+
         def features_for_project(project)
             results = {}
             tversky_producer = TverskyReferencesProducer.new  ({:alpha => 0.5, :threshold => 0.0})

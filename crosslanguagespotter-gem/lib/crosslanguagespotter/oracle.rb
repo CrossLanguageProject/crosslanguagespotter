@@ -15,82 +15,22 @@ MetaOracleRelationEnd = Struct.new :file, :index
 
 class OracleLoader
 
-    def candidates_included_in_all_the_others(candidates_in_correct_position)
-        candidates_in_correct_position.each do |small|
-            ok = true
-            candidates_in_correct_position.each do |big|
-                if small!=big
-                    unless big.source.position.include?(small.source.position)
-                        ok = false
-                    end
-                end
-            end
-            return small if ok
+    def build_weka_classifier(srcpath,oraclepath)        
+        features_data = to_train_data(srcpath,oraclepath)
+        data = []
+        features_data.each do |rel,row|
+            data.push(row)
         end
-        nil
-    end
-
-    def verbose_msg(msg)
-    end
-
-    def find_node(model,surface_form,position)
-        verbose_msg "Looking for '#{surface_form}'"
-        candidates_in_correct_position = []
-        candidates_in_other_positions = []
-        max_embedding_level = -1
-        model.traverse(:also_foreign) do |n|
-            if n.collect_values_with_count.has_key?(surface_form)
-                if n.source.position(:absolute).include?(position)
-                    if n.source.embedding_level>=max_embedding_level
-                        if n.source.embedding_level>max_embedding_level
-                            candidates_in_correct_position.clear
-                        end
-                        max_embedding_level = n.source.embedding_level
-                        candidates_in_correct_position << n
-                    end
-                else
-                    candidates_in_other_positions << n
-                end
-            end
-        end
-        if candidates_in_correct_position.count!=1
-            smallest_candidate = candidates_included_in_all_the_others(candidates_in_correct_position)
-            unless smallest_candidate
-                puts "I did not find exactly once '#{surface_form}' at #{position}. I found it there #{candidates_in_correct_position.count} times (found elsewhere #{candidates_in_other_positions.count} times)"
-
-
-                candidates_in_other_positions.each do |wp|
-                    puts " * #{wp.source.position(:absolute)}"
-                end
-                puts "Candidate in corresponding position:"
-                candidates_in_correct_position.each do |c|
-                    puts " * #{c} (embedded? #{c.source.embedded?})"
-                end
-                raise "Candidates found in #{position} are #{candidates_in_correct_position.count}"
-            else
-                puts "More than one candidate, I pick up the smallest"
-                return smallest_candidate
-            end
-        end
-        candidates_in_correct_position[0]
-    end
-
-    # the given column is calculated counting 4 for each tab,
-    # while the output count just 1 also per tab
-    def convert_from_tabcolumn_to_plaincolumn(file,line_index,tabcol)
-        line = @file_lines[file][line_index-1]
-        tabcol_to_plaincol(line,tabcol)
-    end
-
-    def tabcol_to_plaincol(line,tabcol)
-        c   = 0
-        i   = 0
-        while c<tabcol
-            c+=((line[i]=="\t") ? 4 : 1)
-            i+=1
-        end
-        raise "error" unless c==tabcol
-        i
+        keys = {shared_length: :numeric,
+                    tfidf_shared: :numeric,itfidf_shared: :numeric,
+                    perc_shared_length_min: :numeric,
+                    perc_shared_length_max: :numeric,
+                    diff_min: :numeric,diff_max: :numeric,
+                    perc_diff_min: :numeric,perc_diff_max: :numeric,
+                    context: :numeric,jaccard: :numeric,jaro: :numeric,tversky: :numeric,
+                    result: :boolean}
+        train_instances = hash2weka_instances("oracle",data,keys,:result)
+        WekaClassifier.new(train_instances)
     end
 
     def to_train_data(srcpath,oraclepath)
@@ -218,6 +158,86 @@ class OracleLoader
 
         #print("#{ok_a} #{ko_a} #{ok_b} #{ko_b}")
         return train_data
+    end
+
+    private
+
+    def candidates_included_in_all_the_others(candidates_in_correct_position)
+        candidates_in_correct_position.each do |small|
+            ok = true
+            candidates_in_correct_position.each do |big|
+                if small!=big
+                    unless big.source.position.include?(small.source.position)
+                        ok = false
+                    end
+                end
+            end
+            return small if ok
+        end
+        nil
+    end
+
+    def verbose_msg(msg)
+    end
+
+    def find_node(model,surface_form,position)
+        verbose_msg "Looking for '#{surface_form}'"
+        candidates_in_correct_position = []
+        candidates_in_other_positions = []
+        max_embedding_level = -1
+        model.traverse(:also_foreign) do |n|
+            if n.collect_values_with_count.has_key?(surface_form)
+                if n.source.position(:absolute).include?(position)
+                    if n.source.embedding_level>=max_embedding_level
+                        if n.source.embedding_level>max_embedding_level
+                            candidates_in_correct_position.clear
+                        end
+                        max_embedding_level = n.source.embedding_level
+                        candidates_in_correct_position << n
+                    end
+                else
+                    candidates_in_other_positions << n
+                end
+            end
+        end
+        if candidates_in_correct_position.count!=1
+            smallest_candidate = candidates_included_in_all_the_others(candidates_in_correct_position)
+            unless smallest_candidate
+                puts "I did not find exactly once '#{surface_form}' at #{position}. I found it there #{candidates_in_correct_position.count} times (found elsewhere #{candidates_in_other_positions.count} times)"
+
+
+                candidates_in_other_positions.each do |wp|
+                    puts " * #{wp.source.position(:absolute)}"
+                end
+                puts "Candidate in corresponding position:"
+                candidates_in_correct_position.each do |c|
+                    puts " * #{c} (embedded? #{c.source.embedded?})"
+                end
+                raise "Candidates found in #{position} are #{candidates_in_correct_position.count}"
+            else
+                puts "More than one candidate, I pick up the smallest"
+                return smallest_candidate
+            end
+        end
+        candidates_in_correct_position[0]
+    end
+
+    # the given column is calculated counting 4 for each tab,
+    # while the output count just 1 also per tab
+    def convert_from_tabcolumn_to_plaincolumn(file,line_index,tabcol)
+        line = @file_lines[file][line_index-1]
+        tabcol_to_plaincol(line,tabcol)
+    end
+
+    def tabcol_to_plaincol(line,tabcol)
+        c   = 0
+        i   = 0
+        while c<tabcol
+            c+=((line[i]=="\t") ? 4 : 1)
+            i+=1
+        end
+        raise "error" unless c==tabcol
+        i
     end
 
 end

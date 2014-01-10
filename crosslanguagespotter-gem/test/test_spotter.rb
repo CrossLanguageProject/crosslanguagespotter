@@ -22,14 +22,24 @@ end
 def test_features_calc
     dir = './test/data/angular_puzzle'
     spotter = CrossLanguageSpotter::Spotter.new()
-    spotter.features_for_dir(dir)
+    #spotter.features_for_dir(dir)
+    puts "DISABLED!"
 end
 
 def test_oracle
     dir = './test/data/angular_puzzle'
     oracle_loader = OracleLoader.new
-    oracle_loader.to_train_data(dir,'./test/data/angular-puzzle.GS')
+    #oracle_loader.to_train_data(dir,'./test/data/angular-puzzle.GS')
+    puts "DISABLED!"
 end
 
+def test_full_behavior
+    oracle_loader = OracleLoader.new
+    classifier = oracle_loader.build_weka_classifier('./test/data/angular_puzzle','./test/data/angular-puzzle.GS')
+    spotter = CrossLanguageSpotter::Spotter.new()
+    project = Project.new('./test/data/services')
+    results = spotter.classify_relations(project,classifier)
+    puts results
+end
 
 end
