@@ -24,16 +24,16 @@
       {% for rel in relations %}
       <div class="row text-left">
         <div class="col-md-6">
-          <h2> {{ rel.namefile_A }}</h2>
+          <h2> {{ rel.filenameA }}</h2>
           <pre>
             <code class="language-html">
-              {{ rel.srcfile_A}}
+              {{ rel.srcfileA}}
             </code>
           </pre>
           <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
         </div>
         <div class="col-md-6">
-          <h2> {{ rel.namefileB }}</h2>
+          <h2> {{ rel.filenameB }}</h2>
           <pre>
             <code class="language-html">
               {{ rel.srcfileB}}
