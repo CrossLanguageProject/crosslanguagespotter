@@ -21,20 +21,26 @@ class OracleLoader
         features_data.each do |rel,row|
             data.push(row)
         end
-        keys = {shared_length: :numeric,
-                    tfidf_shared: :numeric,itfidf_shared: :numeric,
+        keys = {    shared_length: :numeric,
+                    tfidf_shared: :numeric,
+                    itfidf_shared: :numeric,
                     perc_shared_length_min: :numeric,
                     perc_shared_length_max: :numeric,
-                    diff_min: :numeric,diff_max: :numeric,
-                    perc_diff_min: :numeric,perc_diff_max: :numeric,
-                    context: :numeric,jaccard: :numeric,jaro: :numeric,tversky: :numeric,
+                    diff_min: :numeric,
+                    diff_max: :numeric,
+                    perc_diff_min: :numeric,
+                    perc_diff_max: :numeric,
+                    context: :numeric,
+                    jaccard: :numeric,
+                    jaro: :numeric,
+                    tversky: :numeric,
                     result: :boolean}
         train_instances = hash2weka_instances("oracle",data,keys,:result)
         WekaClassifier.new(train_instances)
     end
 
     def to_train_data(srcpath,oraclepath)
-        project = Project.new(srcpath,false)
+        project = Project.new(srcpath)
 
         spotter = Spotter.new
         features = spotter.features_for_project(project)
@@ -75,7 +81,6 @@ class OracleLoader
                 #else
                 #    raise "Exptected true or false"
                 #end
-                result = true
 
                 #if oracle_values.values.include?([end_a,end_b])
                 #    raise "Line #{l+1} is a duplicate of line #{oracle_values.find {|k,v| v==[end_a,end_b]}}"
@@ -132,7 +137,7 @@ class OracleLoader
                     rel = CrossLanguageRelation.new([id_a,id_b])
                     f = features[rel]
                     raise "Unknown features for #{rel} (a:#{node_a.source.artifact(:absolute).filename} L#{node_a.source.position(:absolute).begin_line},b:#{node_b.source.artifact(:absolute).filename} L#{node_b.source.position(:absolute).begin_line})" unless f
-                    entry = { result: result }
+                    entry = { result: true }
                     f.each do |k,v|
                         entry[k] = v
                     end
@@ -156,7 +161,16 @@ class OracleLoader
             end
         end
 
-        #print("#{ok_a} #{ko_a} #{ok_b} #{ko_b}")
+        pos = 0
+        neg = 0
+        train_data.each do |k,v|
+            if v[:result]
+                pos+=1
+                #puts v
+            else
+                neg+=1
+            end
+        end
         return train_data
     end
 

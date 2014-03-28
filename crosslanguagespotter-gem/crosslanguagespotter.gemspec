@@ -26,6 +26,8 @@ Gem::Specification.new do |s|
   s.add_dependency('codemodels-ruby')
   s.add_dependency('codemodels-xml')
   s.add_dependency('codemodels-properties')
+  s.add_dependency('htmlentities')
+  s.add_dependency('liquid')
 
   s.add_development_dependency "bundler"
   s.add_development_dependency "rake"  

@@ -3,7 +3,7 @@ require 'java'
 module CrossLanguageSpotter
 
 def build_classifier(training_instances)
-    c = Java::weka::classifiers::trees::RandomForest.new
+    c = Java::weka::classifiers::trees::RandomTree.new
     c.build_classifier(training_instances)
     c
 end
@@ -17,8 +17,10 @@ class WekaClassifier
     def classify(data_instances)
         results = []
         data_instances.enumerate_instances.each do |instance|
+            #puts "Classifying #{instance}"
             r = @weka_classifier.classify_instance(instance)
-            results.push({result: r, instance: instance})
+            #puts "Result: #{r} #{instance}"
+            results.push({result: r==0.0, instance: instance})
         end
         return results
     end
@@ -72,6 +74,8 @@ def hash2weka_instances(name,data,keys,class_value)
     if class_value
         instances.setClassIndex(attributes_indexes[class_value])
     end
+
+    #puts instances.to_s
 
     return instances
 end

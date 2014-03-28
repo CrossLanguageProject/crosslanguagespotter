@@ -310,10 +310,8 @@ class Project
             load_model_from_file(f)
         end
         Dir["#{src}/**/*.js"].each do |f|           
-            unless f.include?('lib')
-                puts "Loading model from #{f}" if @verbose
-                load_model_from_file(f) 
-            end
+            puts "Loading model from #{f}" if @verbose
+            load_model_from_file(f) 
         end     
     end
 

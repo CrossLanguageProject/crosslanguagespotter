@@ -67,12 +67,14 @@ module CrossLanguageSpotter
                 context: :numeric,jaccard: :numeric,jaro: :numeric,tversky: :numeric,
                 result: :boolean}
             data_instances = hash2weka_instances("data",data,keys,:result)
-            classifier.classify(data_instances)
+            classification = classifier.classify(data_instances)
+
             i=0
             results = []
-            data_instances.enumerate_instances.each do |instance|
-                result = instance.value(instance.class_attribute)
-                if result>0
+            classification.each do |c|                
+                if c[:result]
+                    # just put a true in the real relations
+                    list_of_original_features_rows[i][:result] = true
                     results.push(list_of_original_features_rows[i])
                 end
                 i+=1

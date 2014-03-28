@@ -34,9 +34,9 @@
      */
     app.controller('slidingAdvancedCtrl', function($scope) {
         $scope.puzzles = [
-            { src: './img/misko.jpg', title: 'Miško Hevery', rows: 4, cols: 4 },
-            { src: './img/igor.jpg', title: 'Igor Minár', rows: 3, cols: 3 },
-            { src: './img/vojta.jpg', title: 'Vojta Jína', rows: 4, cols: 3 }
+            { src: './img/misko.jpg', title: 'Misko Hevery', rows: 4, cols: 4 },
+            { src: './img/igor.jpg', title: 'Igor Minar', rows: 3, cols: 3 },
+            { src: './img/vojta.jpg', title: 'Vojta Jina', rows: 4, cols: 3 }
         ];
     });
 
