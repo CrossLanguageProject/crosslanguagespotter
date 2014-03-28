@@ -4,10 +4,13 @@ Cross Language Relations Spotter
 This library can spot cross-language relations.
 The library is provided as a JRuby gem, code is available in the directory crosslanguagespotter-gem.
 
-Example
-=======
+# Example
 
 This example uses data include in the gem, under test/data.
+
+First we need to build a model using a golden set, then we can use the model to recognize cross-language relations.
+
+## Train
 
 First of all you need to train the classifier with a golden set. The golden set has to be manually produced by inspecting similar applications. In the example we provide one, based on an Angular-JS application. We still don't know how generalizable is the classification process: can you train the classifier using a golden-set built on an Angular-JS application and have it work on another kind of application? Maybe, we are trying to understand it.
 
@@ -21,6 +24,8 @@ First you specify a directory where the source code is contained, then the path 
     index.html:12:12:puzzleApp:app.js:4:31:puzzleApp
     
 It specifies that the element in the file index.html (under the project dir) at line 12, column 12 is related to the element in app.js at line 4 column 31. In both cases the word at that place is "puzzleApp".
+
+## Use the classifier
 
 Ok, now you have a classifier. You can ask it to find the relations in your project by doing:
 
