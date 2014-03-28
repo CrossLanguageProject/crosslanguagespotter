@@ -21,20 +21,22 @@ class OracleLoader
         features_data.each do |rel,row|
             data.push(row)
         end
-        keys = {    shared_length: :numeric,
-                    tfidf_shared: :numeric,
-                    itfidf_shared: :numeric,
-                    perc_shared_length_min: :numeric,
-                    perc_shared_length_max: :numeric,
-                    diff_min: :numeric,
-                    diff_max: :numeric,
-                    perc_diff_min: :numeric,
-                    perc_diff_max: :numeric,
-                    context: :numeric,
-                    jaccard: :numeric,
-                    jaro: :numeric,
-                    tversky: :numeric,
-                    result: :boolean}
+        keys = {    
+            shared_length: :numeric,
+            tfidf_shared: :numeric,
+            itfidf_shared: :numeric,
+            perc_shared_length_min: :numeric,
+            perc_shared_length_max: :numeric,
+            diff_min: :numeric,
+            diff_max: :numeric,
+            perc_diff_min: :numeric,
+            perc_diff_max: :numeric,
+            context: :numeric,
+            jaccard: :numeric,
+            jaro: :numeric,
+            tversky: :numeric,
+            result: :boolean
+        }
         train_instances = hash2weka_instances("oracle",data,keys,:result)
         WekaClassifier.new(train_instances)
     end

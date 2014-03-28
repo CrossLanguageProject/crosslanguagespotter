@@ -1,0 +1,1501 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cross Language Spotter - Debug Interface</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/highlightstyles/default.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+  <body>
+    <div class="container">
+      <h1> Cross Language Relations - Console Log</h1>
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+                  &#60;link rel=&#34;stylesheet&#34; type=&#34;text/css&#34; href=&#34;css/styles.css&#34;/&#62;&#10;&#60;/head&#62;&#10;&#60;body ng-app=&#34;puzzleApp&#34;&#62;&#10;&#9;&#60;ul id=&#34;types&#34;&#62;&#10;&#9;&#9;&#60;li ng-repeat=&#34;t in types&#34; ng-class=&#34;{&#39;selected&#39;: t.id == type}&#34;&#62;&#10;&#9;&#9;&#9;&#60;a ng-href=&#34;#/{{t.id}}&#34;&#62;{{t.<span style="background-color:yellow;padding:2px">title</span>}}&#60;/a&#62;&#10;&#9;&#9;&#60;/li&#62;&#10;&#9;&#60;/ul&#62;&#10;&#10;&#9;&#60;div ng-include=&#34;type&#34;&#62;&#60;/div&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/app.js</h2>
+          <pre>
+            <code class="language-javascript">
+              &#10;    var app = angular.module(&#39;puzzleApp&#39;, [&#39;slidingPuzzle&#39;, &#39;wordSearchPuzzle&#39;]);&#10;&#10;    // puzzle types&#10;    var types = [&#10;        { id: &#39;sliding-puzzle&#39;, <span style="background-color:yellow;padding:2px">title</span>: &#39;Sliding puzzle&#39; },&#10;        { id: &#39;word-search-puzzle&#39;, title: &#39;Word search puzzle&#39; }&#10;    ];&#10;&#10;    /**&#10;     * Config
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+                  &#60;link rel=&#34;stylesheet&#34; type=&#34;text/css&#34; href=&#34;css/styles.css&#34;/&#62;&#10;&#60;/head&#62;&#10;&#60;body ng-app=&#34;puzzleApp&#34;&#62;&#10;&#9;&#60;ul id=&#34;types&#34;&#62;&#10;&#9;&#9;&#60;li ng-repeat=&#34;t in types&#34; ng-class=&#34;{&#39;selected&#39;: t.id == type}&#34;&#62;&#10;&#9;&#9;&#9;&#60;a ng-href=&#34;#/{{t.id}}&#34;&#62;{{t.<span style="background-color:yellow;padding:2px">title</span>}}&#60;/a&#62;&#10;&#9;&#9;&#60;/li&#62;&#10;&#9;&#60;/ul&#62;&#10;&#10;&#9;&#60;div ng-include=&#34;type&#34;&#62;&#60;/div&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/app.js</h2>
+          <pre>
+            <code class="language-javascript">
+                  var app = angular.module(&#39;puzzleApp&#39;, [&#39;slidingPuzzle&#39;, &#39;wordSearchPuzzle&#39;]);&#10;&#10;    // puzzle types&#10;    var types = [&#10;        { id: &#39;sliding-puzzle&#39;, title: &#39;Sliding puzzle&#39; },&#10;        { id: &#39;word-search-puzzle&#39;, <span style="background-color:yellow;padding:2px">title</span>: &#39;Word search puzzle&#39; }&#10;    ];&#10;&#10;    /**&#10;     * Config&#10;     */
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#60;/fieldset&#62;&#60;br/&#62;&#10;&#10;&#9;&#9;&#60;fieldset id=&#34;sliding-advanced&#34; ng-controller=&#34;slidingAdvancedCtrl&#34;&#62;&#10;&#9;&#9;&#9;&#60;legend&#62;Advanced&#60;/legend&#62;&#10;&#9;&#9;&#9;&#60;div ng-repeat=&#34;puzzle in puzzles&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#60;h2&#62;{{puzzle.<span style="background-color:yellow;padding:2px">title</span>}}&#60;/h2&#62;&#10;&#9;&#9;&#9;&#9;&#60;div class=&#34;src&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;input type=&#34;text&#34; ng-model=&#34;puzzle.src&#34;/&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;div class=&#34;status&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;moves: &#60;strong&#62;{{puzzle.api.moves}}&#60;/strong&#62;&#60;br/&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/app.js</h2>
+          <pre>
+            <code class="language-javascript">
+              /**&#10; * Advanced sliding puzzle controller&#10; */&#10;app.controller(&#39;slidingAdvancedCtrl&#39;, function($scope) {&#10;    $scope.puzzles = [&#10;        { src: &#39;./img/misko.jpg&#39;, <span style="background-color:yellow;padding:2px">title</span>: &#39;Misko Hevery&#39;, rows: 4, cols: 4 },&#10;        { src: &#39;./img/igor.jpg&#39;, title: &#39;Igor Minar&#39;, rows: 3, cols: 3 },&#10;        { src: &#39;./img/vojta.jpg&#39;, title: &#39;Vojta Jina&#39;, rows: 4, cols: 3 }&#10;    ];&#10;});
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#60;/fieldset&#62;&#60;br/&#62;&#10;&#10;&#9;&#9;&#60;fieldset id=&#34;sliding-advanced&#34; ng-controller=&#34;slidingAdvancedCtrl&#34;&#62;&#10;&#9;&#9;&#9;&#60;legend&#62;Advanced&#60;/legend&#62;&#10;&#9;&#9;&#9;&#60;div ng-repeat=&#34;puzzle in puzzles&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#60;h2&#62;{{puzzle.<span style="background-color:yellow;padding:2px">title</span>}}&#60;/h2&#62;&#10;&#9;&#9;&#9;&#9;&#60;div class=&#34;src&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;input type=&#34;text&#34; ng-model=&#34;puzzle.src&#34;/&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;div class=&#34;status&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;moves: &#60;strong&#62;{{puzzle.api.moves}}&#60;/strong&#62;&#60;br/&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/app.js</h2>
+          <pre>
+            <code class="language-javascript">
+                   * Advanced sliding puzzle controller&#10;     */&#10;    app.controller(&#39;slidingAdvancedCtrl&#39;, function($scope) {&#10;        $scope.puzzles = [&#10;            { src: &#39;./img/misko.jpg&#39;, title: &#39;Misko Hevery&#39;, rows: 4, cols: 4 },&#10;            { src: &#39;./img/igor.jpg&#39;, <span style="background-color:yellow;padding:2px">title</span>: &#39;Igor Minar&#39;, rows: 3, cols: 3 },&#10;            { src: &#39;./img/vojta.jpg&#39;, title: &#39;Vojta Jina&#39;, rows: 4, cols: 3 }&#10;        ];&#10;    });&#10;&#10;    /**
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#60;/fieldset&#62;&#60;br/&#62;&#10;&#10;&#9;&#9;&#60;fieldset id=&#34;sliding-advanced&#34; ng-controller=&#34;slidingAdvancedCtrl&#34;&#62;&#10;&#9;&#9;&#9;&#60;legend&#62;Advanced&#60;/legend&#62;&#10;&#9;&#9;&#9;&#60;div ng-repeat=&#34;puzzle in puzzles&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#60;h2&#62;{{puzzle.<span style="background-color:yellow;padding:2px">title</span>}}&#60;/h2&#62;&#10;&#9;&#9;&#9;&#9;&#60;div class=&#34;src&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;input type=&#34;text&#34; ng-model=&#34;puzzle.src&#34;/&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;div class=&#34;status&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;moves: &#60;strong&#62;{{puzzle.api.moves}}&#60;/strong&#62;&#60;br/&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/app.js</h2>
+          <pre>
+            <code class="language-javascript">
+                   */&#10;    app.controller(&#39;slidingAdvancedCtrl&#39;, function($scope) {&#10;        $scope.puzzles = [&#10;            { src: &#39;./img/misko.jpg&#39;, title: &#39;Misko Hevery&#39;, rows: 4, cols: 4 },&#10;            { src: &#39;./img/igor.jpg&#39;, title: &#39;Igor Minar&#39;, rows: 3, cols: 3 },&#10;            { src: &#39;./img/vojta.jpg&#39;, <span style="background-color:yellow;padding:2px">title</span>: &#39;Vojta Jina&#39;, rows: 4, cols: 3 }&#10;        ];&#10;    });&#10;&#10;    /**&#10;     * Word search puzzle controller
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#60;fieldset id=&#34;sliding-advanced&#34; ng-controller=&#34;slidingAdvancedCtrl&#34;&#62;&#10;&#9;&#9;&#9;&#60;legend&#62;Advanced&#60;/legend&#62;&#10;&#9;&#9;&#9;&#60;div ng-repeat=&#34;puzzle in puzzles&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#60;h2&#62;{{puzzle.title}}&#60;/h2&#62;&#10;&#9;&#9;&#9;&#9;&#60;div class=&#34;src&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;input type=&#34;text&#34; ng-model=&#34;puzzle.<span style="background-color:yellow;padding:2px">src</span>&#34;/&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;div class=&#34;status&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;moves: &#60;strong&#62;{{puzzle.api.moves}}&#60;/strong&#62;&#60;br/&#62;&#10;&#9;&#9;&#9;&#9;&#9;solved: &#60;strong&#62;{{puzzle.api.isSolved()}}&#60;/strong&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/app.js</h2>
+          <pre>
+            <code class="language-javascript">
+              /**&#10; * Advanced sliding puzzle controller&#10; */&#10;app.controller(&#39;slidingAdvancedCtrl&#39;, function($scope) {&#10;    $scope.puzzles = [&#10;        { <span style="background-color:yellow;padding:2px">src</span>: &#39;./img/misko.jpg&#39;, title: &#39;Misko Hevery&#39;, rows: 4, cols: 4 },&#10;        { src: &#39;./img/igor.jpg&#39;, title: &#39;Igor Minar&#39;, rows: 3, cols: 3 },&#10;        { src: &#39;./img/vojta.jpg&#39;, title: &#39;Vojta Jina&#39;, rows: 4, cols: 3 }&#10;    ];&#10;});
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#60;fieldset id=&#34;sliding-advanced&#34; ng-controller=&#34;slidingAdvancedCtrl&#34;&#62;&#10;&#9;&#9;&#9;&#60;legend&#62;Advanced&#60;/legend&#62;&#10;&#9;&#9;&#9;&#60;div ng-repeat=&#34;puzzle in puzzles&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#60;h2&#62;{{puzzle.title}}&#60;/h2&#62;&#10;&#9;&#9;&#9;&#9;&#60;div class=&#34;src&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;input type=&#34;text&#34; ng-model=&#34;puzzle.<span style="background-color:yellow;padding:2px">src</span>&#34;/&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;div class=&#34;status&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;moves: &#60;strong&#62;{{puzzle.api.moves}}&#60;/strong&#62;&#60;br/&#62;&#10;&#9;&#9;&#9;&#9;&#9;solved: &#60;strong&#62;{{puzzle.api.isSolved()}}&#60;/strong&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/app.js</h2>
+          <pre>
+            <code class="language-javascript">
+                   * Advanced sliding puzzle controller&#10;     */&#10;    app.controller(&#39;slidingAdvancedCtrl&#39;, function($scope) {&#10;        $scope.puzzles = [&#10;            { src: &#39;./img/misko.jpg&#39;, title: &#39;Misko Hevery&#39;, rows: 4, cols: 4 },&#10;            { <span style="background-color:yellow;padding:2px">src</span>: &#39;./img/igor.jpg&#39;, title: &#39;Igor Minar&#39;, rows: 3, cols: 3 },&#10;            { src: &#39;./img/vojta.jpg&#39;, title: &#39;Vojta Jina&#39;, rows: 4, cols: 3 }&#10;        ];&#10;    });&#10;&#10;    /**
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#60;fieldset id=&#34;sliding-advanced&#34; ng-controller=&#34;slidingAdvancedCtrl&#34;&#62;&#10;&#9;&#9;&#9;&#60;legend&#62;Advanced&#60;/legend&#62;&#10;&#9;&#9;&#9;&#60;div ng-repeat=&#34;puzzle in puzzles&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#60;h2&#62;{{puzzle.title}}&#60;/h2&#62;&#10;&#9;&#9;&#9;&#9;&#60;div class=&#34;src&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;input type=&#34;text&#34; ng-model=&#34;puzzle.<span style="background-color:yellow;padding:2px">src</span>&#34;/&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;div class=&#34;status&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;moves: &#60;strong&#62;{{puzzle.api.moves}}&#60;/strong&#62;&#60;br/&#62;&#10;&#9;&#9;&#9;&#9;&#9;solved: &#60;strong&#62;{{puzzle.api.isSolved()}}&#60;/strong&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/app.js</h2>
+          <pre>
+            <code class="language-javascript">
+                   */&#10;    app.controller(&#39;slidingAdvancedCtrl&#39;, function($scope) {&#10;        $scope.puzzles = [&#10;            { src: &#39;./img/misko.jpg&#39;, title: &#39;Misko Hevery&#39;, rows: 4, cols: 4 },&#10;            { src: &#39;./img/igor.jpg&#39;, title: &#39;Igor Minar&#39;, rows: 3, cols: 3 },&#10;            { <span style="background-color:yellow;padding:2px">src</span>: &#39;./img/vojta.jpg&#39;, title: &#39;Vojta Jina&#39;, rows: 4, cols: 3 }&#10;        ];&#10;    });&#10;&#10;    /**&#10;     * Word search puzzle controller
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#9;&#9;&#9;rows: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.rows&#34; size=&#34;2&#34;/&#62;&#10;&#9;&#9;&#9;&#9;&#9;cols: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.cols&#34; size=&#34;2&#34;/&#62;&#60;br/&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.shuffle()&#34;&#62;shuffle&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.solve()&#34;&#62;solve&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;sliding-puzzle api=&#34;puzzle.api&#34; size=&#34;{{puzzle.rows}}x{{puzzle.cols}}&#34; <span style="background-color:yellow;padding:2px">src=&#34;{{puzzle.src}}&#34;&#62;</span>&#60;/sliding-puzzle&#62;&#10;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#60;/fieldset&#62;&#10;&#9;&#60;/script&#62;&#10;&#10;&#9;&#60;script type=&#34;text/ng-template&#34; id=&#34;word-search-puzzle&#34;&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/app.js</h2>
+          <pre>
+            <code class="language-javascript">
+              /**&#10; * Advanced sliding puzzle controller&#10; */&#10;app.controller(&#39;slidingAdvancedCtrl&#39;, function($scope) {&#10;    $scope.puzzles = [&#10;        { <span style="background-color:yellow;padding:2px">src</span>: &#39;./img/misko.jpg&#39;, title: &#39;Misko Hevery&#39;, rows: 4, cols: 4 },&#10;        { src: &#39;./img/igor.jpg&#39;, title: &#39;Igor Minar&#39;, rows: 3, cols: 3 },&#10;        { src: &#39;./img/vojta.jpg&#39;, title: &#39;Vojta Jina&#39;, rows: 4, cols: 3 }&#10;    ];&#10;});
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#9;&#9;&#9;rows: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.rows&#34; size=&#34;2&#34;/&#62;&#10;&#9;&#9;&#9;&#9;&#9;cols: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.cols&#34; size=&#34;2&#34;/&#62;&#60;br/&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.shuffle()&#34;&#62;shuffle&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.solve()&#34;&#62;solve&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;sliding-puzzle api=&#34;puzzle.api&#34; size=&#34;{{puzzle.rows}}x{{puzzle.cols}}&#34; <span style="background-color:yellow;padding:2px">src=&#34;{{puzzle.src}}&#34;&#62;</span>&#60;/sliding-puzzle&#62;&#10;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#60;/fieldset&#62;&#10;&#9;&#60;/script&#62;&#10;&#10;&#9;&#60;script type=&#34;text/ng-template&#34; id=&#34;word-search-puzzle&#34;&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/app.js</h2>
+          <pre>
+            <code class="language-javascript">
+                   * Advanced sliding puzzle controller&#10;     */&#10;    app.controller(&#39;slidingAdvancedCtrl&#39;, function($scope) {&#10;        $scope.puzzles = [&#10;            { src: &#39;./img/misko.jpg&#39;, title: &#39;Misko Hevery&#39;, rows: 4, cols: 4 },&#10;            { <span style="background-color:yellow;padding:2px">src</span>: &#39;./img/igor.jpg&#39;, title: &#39;Igor Minar&#39;, rows: 3, cols: 3 },&#10;            { src: &#39;./img/vojta.jpg&#39;, title: &#39;Vojta Jina&#39;, rows: 4, cols: 3 }&#10;        ];&#10;    });&#10;&#10;    /**
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#9;&#9;&#9;rows: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.rows&#34; size=&#34;2&#34;/&#62;&#10;&#9;&#9;&#9;&#9;&#9;cols: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.cols&#34; size=&#34;2&#34;/&#62;&#60;br/&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.shuffle()&#34;&#62;shuffle&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.solve()&#34;&#62;solve&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;sliding-puzzle api=&#34;puzzle.api&#34; size=&#34;{{puzzle.rows}}x{{puzzle.cols}}&#34; <span style="background-color:yellow;padding:2px">src=&#34;{{puzzle.src}}&#34;&#62;</span>&#60;/sliding-puzzle&#62;&#10;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#60;/fieldset&#62;&#10;&#9;&#60;/script&#62;&#10;&#10;&#9;&#60;script type=&#34;text/ng-template&#34; id=&#34;word-search-puzzle&#34;&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/app.js</h2>
+          <pre>
+            <code class="language-javascript">
+                   */&#10;    app.controller(&#39;slidingAdvancedCtrl&#39;, function($scope) {&#10;        $scope.puzzles = [&#10;            { src: &#39;./img/misko.jpg&#39;, title: &#39;Misko Hevery&#39;, rows: 4, cols: 4 },&#10;            { src: &#39;./img/igor.jpg&#39;, title: &#39;Igor Minar&#39;, rows: 3, cols: 3 },&#10;            { <span style="background-color:yellow;padding:2px">src</span>: &#39;./img/vojta.jpg&#39;, title: &#39;Vojta Jina&#39;, rows: 4, cols: 3 }&#10;        ];&#10;    });&#10;&#10;    /**&#10;     * Word search puzzle controller
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#9;&#9;&#9;rows: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.rows&#34; size=&#34;2&#34;/&#62;&#10;&#9;&#9;&#9;&#9;&#9;cols: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.cols&#34; size=&#34;2&#34;/&#62;&#60;br/&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.shuffle()&#34;&#62;shuffle&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.solve()&#34;&#62;solve&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;sliding-puzzle api=&#34;puzzle.api&#34; size=&#34;{{puzzle.rows}}x{{puzzle.cols}}&#34; src=&#34;{{puzzle.<span style="background-color:yellow;padding:2px">src</span>}}&#34;&#62;&#60;/sliding-puzzle&#62;&#10;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#60;/fieldset&#62;&#10;&#9;&#60;/script&#62;&#10;&#10;&#9;&#60;script type=&#34;text/ng-template&#34; id=&#34;word-search-puzzle&#34;&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/app.js</h2>
+          <pre>
+            <code class="language-javascript">
+              /**&#10; * Advanced sliding puzzle controller&#10; */&#10;app.controller(&#39;slidingAdvancedCtrl&#39;, function($scope) {&#10;    $scope.puzzles = [&#10;        { <span style="background-color:yellow;padding:2px">src</span>: &#39;./img/misko.jpg&#39;, title: &#39;Misko Hevery&#39;, rows: 4, cols: 4 },&#10;        { src: &#39;./img/igor.jpg&#39;, title: &#39;Igor Minar&#39;, rows: 3, cols: 3 },&#10;        { src: &#39;./img/vojta.jpg&#39;, title: &#39;Vojta Jina&#39;, rows: 4, cols: 3 }&#10;    ];&#10;});
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#9;&#9;&#9;rows: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.rows&#34; size=&#34;2&#34;/&#62;&#10;&#9;&#9;&#9;&#9;&#9;cols: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.cols&#34; size=&#34;2&#34;/&#62;&#60;br/&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.shuffle()&#34;&#62;shuffle&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.solve()&#34;&#62;solve&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;sliding-puzzle api=&#34;puzzle.api&#34; size=&#34;{{puzzle.rows}}x{{puzzle.cols}}&#34; src=&#34;{{puzzle.<span style="background-color:yellow;padding:2px">src</span>}}&#34;&#62;&#60;/sliding-puzzle&#62;&#10;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#60;/fieldset&#62;&#10;&#9;&#60;/script&#62;&#10;&#10;&#9;&#60;script type=&#34;text/ng-template&#34; id=&#34;word-search-puzzle&#34;&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/app.js</h2>
+          <pre>
+            <code class="language-javascript">
+                   * Advanced sliding puzzle controller&#10;     */&#10;    app.controller(&#39;slidingAdvancedCtrl&#39;, function($scope) {&#10;        $scope.puzzles = [&#10;            { src: &#39;./img/misko.jpg&#39;, title: &#39;Misko Hevery&#39;, rows: 4, cols: 4 },&#10;            { <span style="background-color:yellow;padding:2px">src</span>: &#39;./img/igor.jpg&#39;, title: &#39;Igor Minar&#39;, rows: 3, cols: 3 },&#10;            { src: &#39;./img/vojta.jpg&#39;, title: &#39;Vojta Jina&#39;, rows: 4, cols: 3 }&#10;        ];&#10;    });&#10;&#10;    /**
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#9;&#9;&#9;rows: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.rows&#34; size=&#34;2&#34;/&#62;&#10;&#9;&#9;&#9;&#9;&#9;cols: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.cols&#34; size=&#34;2&#34;/&#62;&#60;br/&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.shuffle()&#34;&#62;shuffle&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.solve()&#34;&#62;solve&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;sliding-puzzle api=&#34;puzzle.api&#34; size=&#34;{{puzzle.rows}}x{{puzzle.cols}}&#34; src=&#34;{{puzzle.<span style="background-color:yellow;padding:2px">src</span>}}&#34;&#62;&#60;/sliding-puzzle&#62;&#10;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#60;/fieldset&#62;&#10;&#9;&#60;/script&#62;&#10;&#10;&#9;&#60;script type=&#34;text/ng-template&#34; id=&#34;word-search-puzzle&#34;&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/app.js</h2>
+          <pre>
+            <code class="language-javascript">
+                   */&#10;    app.controller(&#39;slidingAdvancedCtrl&#39;, function($scope) {&#10;        $scope.puzzles = [&#10;            { src: &#39;./img/misko.jpg&#39;, title: &#39;Misko Hevery&#39;, rows: 4, cols: 4 },&#10;            { src: &#39;./img/igor.jpg&#39;, title: &#39;Igor Minar&#39;, rows: 3, cols: 3 },&#10;            { <span style="background-color:yellow;padding:2px">src</span>: &#39;./img/vojta.jpg&#39;, title: &#39;Vojta Jina&#39;, rows: 4, cols: 3 }&#10;        ];&#10;    });&#10;&#10;    /**&#10;     * Word search puzzle controller
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+                  &#60;script type=&#34;text/javascript&#34; src=&#34;js/puzzle/slidingPuzzle.js&#34;&#62;&#60;/script&#62;&#10;&#9;&#60;script type=&#34;text/javascript&#34; src=&#34;js/puzzle/wordSearchPuzzle.js&#34;&#62;&#60;/script&#62;&#10;&#9;&#60;script type=&#34;text/javascript&#34; src=&#34;js/app.js&#34;&#62;&#60;/script&#62;&#10;    &#60;link rel=&#34;stylesheet&#34; type=&#34;text/css&#34; href=&#34;css/styles.css&#34;/&#62;&#10;&#60;/head&#62;&#10;&#60;body <span style="background-color:yellow;padding:2px">ng-app=&#34;puzzleApp&#34;&#62;</span>&#10;&#9;&#60;ul id=&#34;types&#34;&#62;&#10;&#9;&#9;&#60;li ng-repeat=&#34;t in types&#34; ng-class=&#34;{&#39;selected&#39;: t.id == type}&#34;&#62;&#10;&#9;&#9;&#9;&#60;a ng-href=&#34;#/{{t.id}}&#34;&#62;{{t.title}}&#60;/a&#62;&#10;&#9;&#9;&#60;/li&#62;&#10;&#9;&#60;/ul&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/app.js</h2>
+          <pre>
+            <code class="language-javascript">
+              (function(angular) {&#10;    &#39;use strict&#39;;&#10;&#10;    var app = angular.module(<span style="background-color:yellow;padding:2px">&#39;puzzleApp&#39;</span>, [&#39;slidingPuzzle&#39;, &#39;wordSearchPuzzle&#39;]);&#10;&#10;    // puzzle types&#10;    var types = [&#10;        { id: &#39;sliding-puzzle&#39;, title: &#39;Sliding puzzle&#39; },&#10;        { id: &#39;word-search-puzzle&#39;, title: &#39;Word search puzzle&#39; }
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+                  &#60;link rel=&#34;stylesheet&#34; type=&#34;text/css&#34; href=&#34;css/styles.css&#34;/&#62;&#10;&#60;/head&#62;&#10;&#60;body ng-app=&#34;puzzleApp&#34;&#62;&#10;&#9;&#60;ul id=&#34;types&#34;&#62;&#10;&#9;&#9;&#60;li ng-repeat=&#34;t in types&#34; ng-class=&#34;{&#39;selected&#39;: t.id == type}&#34;&#62;&#10;&#9;&#9;&#9;&#60;a ng-href=&#34;#/{{t.<span style="background-color:yellow;padding:2px">id</span>}}&#34;&#62;{{t.title}}&#60;/a&#62;&#10;&#9;&#9;&#60;/li&#62;&#10;&#9;&#60;/ul&#62;&#10;&#10;&#9;&#60;div ng-include=&#34;type&#34;&#62;&#60;/div&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/app.js</h2>
+          <pre>
+            <code class="language-javascript">
+              &#10;    var app = angular.module(&#39;puzzleApp&#39;, [&#39;slidingPuzzle&#39;, &#39;wordSearchPuzzle&#39;]);&#10;&#10;    // puzzle types&#10;    var types = [&#10;        { <span style="background-color:yellow;padding:2px">id</span>: &#39;sliding-puzzle&#39;, title: &#39;Sliding puzzle&#39; },&#10;        { id: &#39;word-search-puzzle&#39;, title: &#39;Word search puzzle&#39; }&#10;    ];&#10;&#10;    /**&#10;     * Config
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+                  &#60;link rel=&#34;stylesheet&#34; type=&#34;text/css&#34; href=&#34;css/styles.css&#34;/&#62;&#10;&#60;/head&#62;&#10;&#60;body ng-app=&#34;puzzleApp&#34;&#62;&#10;&#9;&#60;ul id=&#34;types&#34;&#62;&#10;&#9;&#9;&#60;li ng-repeat=&#34;t in types&#34; ng-class=&#34;{&#39;selected&#39;: t.id == type}&#34;&#62;&#10;&#9;&#9;&#9;&#60;a ng-href=&#34;#/{{t.<span style="background-color:yellow;padding:2px">id</span>}}&#34;&#62;{{t.title}}&#60;/a&#62;&#10;&#9;&#9;&#60;/li&#62;&#10;&#9;&#60;/ul&#62;&#10;&#10;&#9;&#60;div ng-include=&#34;type&#34;&#62;&#60;/div&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/app.js</h2>
+          <pre>
+            <code class="language-javascript">
+                  var app = angular.module(&#39;puzzleApp&#39;, [&#39;slidingPuzzle&#39;, &#39;wordSearchPuzzle&#39;]);&#10;&#10;    // puzzle types&#10;    var types = [&#10;        { id: &#39;sliding-puzzle&#39;, title: &#39;Sliding puzzle&#39; },&#10;        { <span style="background-color:yellow;padding:2px">id</span>: &#39;word-search-puzzle&#39;, title: &#39;Word search puzzle&#39; }&#10;    ];&#10;&#10;    /**&#10;     * Config&#10;     */
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#60;script type=&#34;text/javascript&#34; src=&#34;js/app.js&#34;&#62;&#60;/script&#62;&#10;    &#60;link rel=&#34;stylesheet&#34; type=&#34;text/css&#34; href=&#34;css/styles.css&#34;/&#62;&#10;&#60;/head&#62;&#10;&#60;body ng-app=&#34;puzzleApp&#34;&#62;&#10;&#9;&#60;ul id=&#34;types&#34;&#62;&#10;&#9;&#9;&#60;li ng-repeat=&#34;t in <span style="background-color:yellow;padding:2px">types</span>&#34; ng-class=&#34;{&#39;selected&#39;: t.id == type}&#34;&#62;&#10;&#9;&#9;&#9;&#60;a ng-href=&#34;#/{{t.id}}&#34;&#62;{{t.title}}&#60;/a&#62;&#10;&#9;&#9;&#60;/li&#62;&#10;&#9;&#60;/ul&#62;&#10;&#10;&#9;&#60;div ng-include=&#34;type&#34;&#62;&#60;/div&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/app.js</h2>
+          <pre>
+            <code class="language-javascript">
+                  &#39;use strict&#39;;&#10;&#10;    var app = angular.module(&#39;puzzleApp&#39;, [&#39;slidingPuzzle&#39;, &#39;wordSearchPuzzle&#39;]);&#10;&#10;    // puzzle types&#10;    var <span style="background-color:yellow;padding:2px">types</span> = [&#10;        { id: &#39;sliding-puzzle&#39;, title: &#39;Sliding puzzle&#39; },&#10;        { id: &#39;word-search-puzzle&#39;, title: &#39;Word search puzzle&#39; }&#10;    ];&#10;&#10;    /**
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#60;script type=&#34;text/javascript&#34; src=&#34;js/app.js&#34;&#62;&#60;/script&#62;&#10;    &#60;link rel=&#34;stylesheet&#34; type=&#34;text/css&#34; href=&#34;css/styles.css&#34;/&#62;&#10;&#60;/head&#62;&#10;&#60;body ng-app=&#34;puzzleApp&#34;&#62;&#10;&#9;&#60;ul id=&#34;types&#34;&#62;&#10;&#9;&#9;&#60;li ng-repeat=&#34;t in <span style="background-color:yellow;padding:2px">types</span>&#34; ng-class=&#34;{&#39;selected&#39;: t.id == type}&#34;&#62;&#10;&#9;&#9;&#9;&#60;a ng-href=&#34;#/{{t.id}}&#34;&#62;{{t.title}}&#60;/a&#62;&#10;&#9;&#9;&#60;/li&#62;&#10;&#9;&#60;/ul&#62;&#10;&#10;&#9;&#60;div ng-include=&#34;type&#34;&#62;&#60;/div&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/app.js</h2>
+          <pre>
+            <code class="language-javascript">
+              &#10;    /**&#10;     * Startup&#10;     */&#10;    app.run(function($rootScope, $route, $filter) {&#10;        $rootScope.<span style="background-color:yellow;padding:2px">types</span> = types;&#10;        $rootScope.type = types[0].id;&#10;&#10;        // set type on route change&#10;        $rootScope.$on(&#39;$routeChangeSuccess&#39;, function(event, route) {&#10;            $rootScope.type = ($filter(&#39;filter&#39;)(types, { id: route.params.type }).length ? route.params.type : types[0].id);
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#60;script type=&#34;text/javascript&#34; src=&#34;js/app.js&#34;&#62;&#60;/script&#62;&#10;    &#60;link rel=&#34;stylesheet&#34; type=&#34;text/css&#34; href=&#34;css/styles.css&#34;/&#62;&#10;&#60;/head&#62;&#10;&#60;body ng-app=&#34;puzzleApp&#34;&#62;&#10;&#9;&#60;ul id=&#34;types&#34;&#62;&#10;&#9;&#9;&#60;li ng-repeat=&#34;t in <span style="background-color:yellow;padding:2px">types</span>&#34; ng-class=&#34;{&#39;selected&#39;: t.id == type}&#34;&#62;&#10;&#9;&#9;&#9;&#60;a ng-href=&#34;#/{{t.id}}&#34;&#62;{{t.title}}&#60;/a&#62;&#10;&#9;&#9;&#60;/li&#62;&#10;&#9;&#60;/ul&#62;&#10;&#10;&#9;&#60;div ng-include=&#34;type&#34;&#62;&#60;/div&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/app.js</h2>
+          <pre>
+            <code class="language-javascript">
+              &#10;    /**&#10;     * Startup&#10;     */&#10;    app.run(function($rootScope, $route, $filter) {&#10;        $rootScope.types = <span style="background-color:yellow;padding:2px">types</span>;&#10;        $rootScope.type = types[0].id;&#10;&#10;        // set type on route change&#10;        $rootScope.$on(&#39;$routeChangeSuccess&#39;, function(event, route) {&#10;            $rootScope.type = ($filter(&#39;filter&#39;)(types, { id: route.params.type }).length ? route.params.type : types[0].id);
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;div class=&#34;status&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;moves: &#60;strong&#62;{{puzzle.api.moves}}&#60;/strong&#62;&#60;br/&#62;&#10;&#9;&#9;&#9;&#9;&#9;solved: &#60;strong&#62;{{puzzle.api.isSolved()}}&#60;/strong&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;div <span style="background-color:yellow;padding:2px">class=&#34;size&#34;&#62;</span>&#10;&#9;&#9;&#9;&#9;&#9;rows: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.rows&#34; size=&#34;2&#34;/&#62;&#10;&#9;&#9;&#9;&#9;&#9;cols: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.cols&#34; size=&#34;2&#34;/&#62;&#60;br/&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.shuffle()&#34;&#62;shuffle&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.solve()&#34;&#62;solve&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/slidingPuzzle.js</h2>
+          <pre>
+            <code class="language-javascript">
+                  &#39;&#60;tr ng-repeat=&#34;($row, row) in puzzle.grid&#34;&#62;&#39; +&#10;    &#39;&#60;td ng-repeat=&#34;($col, tile) in row&#34; ng-click=&#34;puzzle.move($row, $col)&#34; ng-style=&#34;tile.style&#34; ng-class=&#34;{\&#39;puzzle-empty\&#39;: tile.empty}&#34; title=&#34;{{tile.id}}&#34;&#62;&#60;/td&#62;&#39; +&#10;    &#39;&#60;/tr&#62;&#39; +&#10;    &#39;&#60;/table&#62;&#39;,&#10;scope: {&#10;    <span style="background-color:yellow;padding:2px">size</span>: &#39;@&#39;,&#10;    src: &#39;@&#39;,&#10;    api: &#39;=&#39;&#10;},&#10;link: function(scope, element, attrs) {&#10;    var rows, cols,
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#60;fieldset id=&#34;sliding-simple&#34;&#62;&#10;&#9;&#9;&#9;&#60;legend&#62;Basic&#60;/legend&#62;&#10;&#9;&#9;&#9;&#60;sliding-puzzle size=&#34;3x3&#34; src=&#34;img/angular.png&#34;&#62;&#60;/sliding-puzzle&#62;&#10;&#9;&#9;&#60;/fieldset&#62;&#60;br/&#62;&#10;&#10;&#9;&#9;&#60;fieldset id=&#34;sliding-advanced&#34; <span style="background-color:yellow;padding:2px">ng-controller=&#34;slidingAdvancedCtrl&#34;&#62;</span>&#10;&#9;&#9;&#9;&#60;legend&#62;Advanced&#60;/legend&#62;&#10;&#9;&#9;&#9;&#60;div ng-repeat=&#34;puzzle in puzzles&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#60;h2&#62;{{puzzle.title}}&#60;/h2&#62;&#10;&#9;&#9;&#9;&#9;&#60;div class=&#34;src&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;input type=&#34;text&#34; ng-model=&#34;puzzle.src&#34;/&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/app.js</h2>
+          <pre>
+            <code class="language-javascript">
+                  });&#10;&#10;    /**&#10;     * Advanced sliding puzzle controller&#10;     */&#10;    app.controller(<span style="background-color:yellow;padding:2px">&#39;slidingAdvancedCtrl&#39;</span>, function($scope) {&#10;        $scope.puzzles = [&#10;            { src: &#39;./img/misko.jpg&#39;, title: &#39;Misko Hevery&#39;, rows: 4, cols: 4 },&#10;            { src: &#39;./img/igor.jpg&#39;, title: &#39;Igor Minar&#39;, rows: 3, cols: 3 },&#10;            { src: &#39;./img/vojta.jpg&#39;, title: &#39;Vojta Jina&#39;, rows: 4, cols: 3 }&#10;        ];
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#9;&#60;sliding-puzzle size=&#34;3x3&#34; src=&#34;img/angular.png&#34;&#62;&#60;/sliding-puzzle&#62;&#10;&#9;&#9;&#60;/fieldset&#62;&#60;br/&#62;&#10;&#10;&#9;&#9;&#60;fieldset id=&#34;sliding-advanced&#34; ng-controller=&#34;slidingAdvancedCtrl&#34;&#62;&#10;&#9;&#9;&#9;&#60;legend&#62;Advanced&#60;/legend&#62;&#10;&#9;&#9;&#9;&#60;div ng-repeat=&#34;puzzle in <span style="background-color:yellow;padding:2px">puzzles</span>&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#60;h2&#62;{{puzzle.title}}&#60;/h2&#62;&#10;&#9;&#9;&#9;&#9;&#60;div class=&#34;src&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;input type=&#34;text&#34; ng-model=&#34;puzzle.src&#34;/&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;div class=&#34;status&#34;&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/app.js</h2>
+          <pre>
+            <code class="language-javascript">
+              &#10;    /**&#10;     * Advanced sliding puzzle controller&#10;     */&#10;    app.controller(&#39;slidingAdvancedCtrl&#39;, function($scope) {&#10;        $scope.<span style="background-color:yellow;padding:2px">puzzles</span> = [&#10;            { src: &#39;./img/misko.jpg&#39;, title: &#39;Misko Hevery&#39;, rows: 4, cols: 4 },&#10;            { src: &#39;./img/igor.jpg&#39;, title: &#39;Igor Minar&#39;, rows: 3, cols: 3 },&#10;            { src: &#39;./img/vojta.jpg&#39;, title: &#39;Vojta Jina&#39;, rows: 4, cols: 3 }&#10;        ];&#10;    });
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#9;&#9;&#60;h2&#62;{{puzzle.title}}&#60;/h2&#62;&#10;&#9;&#9;&#9;&#9;&#60;div class=&#34;src&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;input type=&#34;text&#34; ng-model=&#34;puzzle.src&#34;/&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;div class=&#34;status&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;moves: &#60;strong&#62;{{puzzle.<span style="background-color:yellow;padding:2px">api</span>.moves}}&#60;/strong&#62;&#60;br/&#62;&#10;&#9;&#9;&#9;&#9;&#9;solved: &#60;strong&#62;{{puzzle.api.isSolved()}}&#60;/strong&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;div class=&#34;size&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;rows: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.rows&#34; size=&#34;2&#34;/&#62;&#10;&#9;&#9;&#9;&#9;&#9;cols: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.cols&#34; size=&#34;2&#34;/&#62;&#60;br/&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/slidingPuzzle.js</h2>
+          <pre>
+            <code class="language-javascript">
+                                  image = new Image();&#10;&#10;                function create() {&#10;                    scope.puzzle = slidingPuzzle(rows, cols);&#10;&#10;                    if (attrs.<span style="background-color:yellow;padding:2px">api</span>) {&#10;                        scope.api = scope.puzzle;&#10;                    }&#10;&#10;                    tile();&#10;                }
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#9;&#9;&#60;h2&#62;{{puzzle.title}}&#60;/h2&#62;&#10;&#9;&#9;&#9;&#9;&#60;div class=&#34;src&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;input type=&#34;text&#34; ng-model=&#34;puzzle.src&#34;/&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;div class=&#34;status&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;moves: &#60;strong&#62;{{puzzle.<span style="background-color:yellow;padding:2px">api</span>.moves}}&#60;/strong&#62;&#60;br/&#62;&#10;&#9;&#9;&#9;&#9;&#9;solved: &#60;strong&#62;{{puzzle.api.isSolved()}}&#60;/strong&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;div class=&#34;size&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;rows: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.rows&#34; size=&#34;2&#34;/&#62;&#10;&#9;&#9;&#9;&#9;&#9;cols: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.cols&#34; size=&#34;2&#34;/&#62;&#60;br/&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/slidingPuzzle.js</h2>
+          <pre>
+            <code class="language-javascript">
+              &#10;                function create() {&#10;                    scope.puzzle = slidingPuzzle(rows, cols);&#10;&#10;                    if (attrs.api) {&#10;                        scope.<span style="background-color:yellow;padding:2px">api</span> = scope.puzzle;&#10;                    }&#10;&#10;                    tile();&#10;                }
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#9;&#9;&#60;div class=&#34;src&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;input type=&#34;text&#34; ng-model=&#34;puzzle.src&#34;/&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;div class=&#34;status&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;moves: &#60;strong&#62;{{puzzle.api.moves}}&#60;/strong&#62;&#60;br/&#62;&#10;&#9;&#9;&#9;&#9;&#9;solved: &#60;strong&#62;{{puzzle.<span style="background-color:yellow;padding:2px">api</span>.isSolved()}}&#60;/strong&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;div class=&#34;size&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;rows: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.rows&#34; size=&#34;2&#34;/&#62;&#10;&#9;&#9;&#9;&#9;&#9;cols: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.cols&#34; size=&#34;2&#34;/&#62;&#60;br/&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.shuffle()&#34;&#62;shuffle&#60;/button&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/slidingPuzzle.js</h2>
+          <pre>
+            <code class="language-javascript">
+                                  image = new Image();&#10;&#10;                function create() {&#10;                    scope.puzzle = slidingPuzzle(rows, cols);&#10;&#10;                    if (attrs.<span style="background-color:yellow;padding:2px">api</span>) {&#10;                        scope.api = scope.puzzle;&#10;                    }&#10;&#10;                    tile();&#10;                }
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#9;&#9;&#60;div class=&#34;src&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;input type=&#34;text&#34; ng-model=&#34;puzzle.src&#34;/&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;div class=&#34;status&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;moves: &#60;strong&#62;{{puzzle.api.moves}}&#60;/strong&#62;&#60;br/&#62;&#10;&#9;&#9;&#9;&#9;&#9;solved: &#60;strong&#62;{{puzzle.<span style="background-color:yellow;padding:2px">api</span>.isSolved()}}&#60;/strong&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;div class=&#34;size&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;rows: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.rows&#34; size=&#34;2&#34;/&#62;&#10;&#9;&#9;&#9;&#9;&#9;cols: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.cols&#34; size=&#34;2&#34;/&#62;&#60;br/&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.shuffle()&#34;&#62;shuffle&#60;/button&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/slidingPuzzle.js</h2>
+          <pre>
+            <code class="language-javascript">
+              &#10;                function create() {&#10;                    scope.puzzle = slidingPuzzle(rows, cols);&#10;&#10;                    if (attrs.api) {&#10;                        scope.<span style="background-color:yellow;padding:2px">api</span> = scope.puzzle;&#10;                    }&#10;&#10;                    tile();&#10;                }
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#9;&#9;&#9;solved: &#60;strong&#62;{{puzzle.api.isSolved()}}&#60;/strong&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;div class=&#34;size&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;rows: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.rows&#34; size=&#34;2&#34;/&#62;&#10;&#9;&#9;&#9;&#9;&#9;cols: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.cols&#34; size=&#34;2&#34;/&#62;&#60;br/&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.<span style="background-color:yellow;padding:2px">api</span>.shuffle()&#34;&#62;shuffle&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.solve()&#34;&#62;solve&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;sliding-puzzle api=&#34;puzzle.api&#34; size=&#34;{{puzzle.rows}}x{{puzzle.cols}}&#34; src=&#34;{{puzzle.src}}&#34;&#62;&#60;/sliding-puzzle&#62;&#10;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#60;/fieldset&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/slidingPuzzle.js</h2>
+          <pre>
+            <code class="language-javascript">
+                                  image = new Image();&#10;&#10;                function create() {&#10;                    scope.puzzle = slidingPuzzle(rows, cols);&#10;&#10;                    if (attrs.<span style="background-color:yellow;padding:2px">api</span>) {&#10;                        scope.api = scope.puzzle;&#10;                    }&#10;&#10;                    tile();&#10;                }
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#9;&#9;&#9;solved: &#60;strong&#62;{{puzzle.api.isSolved()}}&#60;/strong&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;div class=&#34;size&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;rows: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.rows&#34; size=&#34;2&#34;/&#62;&#10;&#9;&#9;&#9;&#9;&#9;cols: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.cols&#34; size=&#34;2&#34;/&#62;&#60;br/&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.<span style="background-color:yellow;padding:2px">api</span>.shuffle()&#34;&#62;shuffle&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.solve()&#34;&#62;solve&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;sliding-puzzle api=&#34;puzzle.api&#34; size=&#34;{{puzzle.rows}}x{{puzzle.cols}}&#34; src=&#34;{{puzzle.src}}&#34;&#62;&#60;/sliding-puzzle&#62;&#10;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#60;/fieldset&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/slidingPuzzle.js</h2>
+          <pre>
+            <code class="language-javascript">
+              &#10;                function create() {&#10;                    scope.puzzle = slidingPuzzle(rows, cols);&#10;&#10;                    if (attrs.api) {&#10;                        scope.<span style="background-color:yellow;padding:2px">api</span> = scope.puzzle;&#10;                    }&#10;&#10;                    tile();&#10;                }
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;div class=&#34;size&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;rows: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.rows&#34; size=&#34;2&#34;/&#62;&#10;&#9;&#9;&#9;&#9;&#9;cols: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.cols&#34; size=&#34;2&#34;/&#62;&#60;br/&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.shuffle()&#34;&#62;shuffle&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.<span style="background-color:yellow;padding:2px">api</span>.solve()&#34;&#62;solve&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;sliding-puzzle api=&#34;puzzle.api&#34; size=&#34;{{puzzle.rows}}x{{puzzle.cols}}&#34; src=&#34;{{puzzle.src}}&#34;&#62;&#60;/sliding-puzzle&#62;&#10;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#60;/fieldset&#62;&#10;&#9;&#60;/script&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/slidingPuzzle.js</h2>
+          <pre>
+            <code class="language-javascript">
+                                  image = new Image();&#10;&#10;                function create() {&#10;                    scope.puzzle = slidingPuzzle(rows, cols);&#10;&#10;                    if (attrs.<span style="background-color:yellow;padding:2px">api</span>) {&#10;                        scope.api = scope.puzzle;&#10;                    }&#10;&#10;                    tile();&#10;                }
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;div class=&#34;size&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;rows: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.rows&#34; size=&#34;2&#34;/&#62;&#10;&#9;&#9;&#9;&#9;&#9;cols: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.cols&#34; size=&#34;2&#34;/&#62;&#60;br/&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.shuffle()&#34;&#62;shuffle&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.<span style="background-color:yellow;padding:2px">api</span>.solve()&#34;&#62;solve&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;sliding-puzzle api=&#34;puzzle.api&#34; size=&#34;{{puzzle.rows}}x{{puzzle.cols}}&#34; src=&#34;{{puzzle.src}}&#34;&#62;&#60;/sliding-puzzle&#62;&#10;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#60;/fieldset&#62;&#10;&#9;&#60;/script&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/slidingPuzzle.js</h2>
+          <pre>
+            <code class="language-javascript">
+              &#10;                function create() {&#10;                    scope.puzzle = slidingPuzzle(rows, cols);&#10;&#10;                    if (attrs.api) {&#10;                        scope.<span style="background-color:yellow;padding:2px">api</span> = scope.puzzle;&#10;                    }&#10;&#10;                    tile();&#10;                }
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#9;&#9;&#9;rows: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.rows&#34; size=&#34;2&#34;/&#62;&#10;&#9;&#9;&#9;&#9;&#9;cols: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.cols&#34; size=&#34;2&#34;/&#62;&#60;br/&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.shuffle()&#34;&#62;shuffle&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.solve()&#34;&#62;solve&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;sliding-puzzle <span style="background-color:yellow;padding:2px">api=&#34;puzzle.api&#34; </span>size=&#34;{{puzzle.rows}}x{{puzzle.cols}}&#34; src=&#34;{{puzzle.src}}&#34;&#62;&#60;/sliding-puzzle&#62;&#10;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#60;/fieldset&#62;&#10;&#9;&#60;/script&#62;&#10;&#10;&#9;&#60;script type=&#34;text/ng-template&#34; id=&#34;word-search-puzzle&#34;&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/slidingPuzzle.js</h2>
+          <pre>
+            <code class="language-javascript">
+                                  image = new Image();&#10;&#10;                function create() {&#10;                    scope.puzzle = slidingPuzzle(rows, cols);&#10;&#10;                    if (attrs.<span style="background-color:yellow;padding:2px">api</span>) {&#10;                        scope.api = scope.puzzle;&#10;                    }&#10;&#10;                    tile();&#10;                }
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#9;&#9;&#9;rows: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.rows&#34; size=&#34;2&#34;/&#62;&#10;&#9;&#9;&#9;&#9;&#9;cols: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.cols&#34; size=&#34;2&#34;/&#62;&#60;br/&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.shuffle()&#34;&#62;shuffle&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.solve()&#34;&#62;solve&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;sliding-puzzle <span style="background-color:yellow;padding:2px">api=&#34;puzzle.api&#34; </span>size=&#34;{{puzzle.rows}}x{{puzzle.cols}}&#34; src=&#34;{{puzzle.src}}&#34;&#62;&#60;/sliding-puzzle&#62;&#10;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#60;/fieldset&#62;&#10;&#9;&#60;/script&#62;&#10;&#10;&#9;&#60;script type=&#34;text/ng-template&#34; id=&#34;word-search-puzzle&#34;&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/slidingPuzzle.js</h2>
+          <pre>
+            <code class="language-javascript">
+              &#10;                function create() {&#10;                    scope.puzzle = slidingPuzzle(rows, cols);&#10;&#10;                    if (attrs.api) {&#10;                        scope.<span style="background-color:yellow;padding:2px">api</span> = scope.puzzle;&#10;                    }&#10;&#10;                    tile();&#10;                }
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#9;&#60;ul class=&#34;words&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#60;li ng-repeat=&#34;word in puzzle.words&#34; ng-class=&#34;{&#39;found&#39;: word.found}&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;{{word.name}}&#10;&#9;&#9;&#9;&#9;&#60;/li&#62;&#10;&#9;&#9;&#9;&#60;/ul&#62;&#10;&#9;&#9;&#9;&#60;word-search-puzzle matrix=&#34;matrix&#34; words=&#34;words&#34; <span style="background-color:yellow;padding:2px">api=&#34;puzzle&#34;&#62;</span>&#60;/word-search-puzzle&#62;&#10;&#9;&#9;&#9;&#60;div class=&#34;status&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.solve()&#34; ng-show=&#34;!puzzle.solved&#34; class=&#34;solve&#34;&#62;solve&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#60;strong ng-show=&#34;puzzle.solved&#34; ng-show=&#34;puzzle.solved&#34;&#62;Solved!&#60;/strong&#62;&#10;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#60;/div&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/wordSearchPuzzle.js</h2>
+          <pre>
+            <code class="language-javascript">
+                              // setup puzzle&#10;                scope.$watch(&#39;matrix&#39;, function(matrix) {&#10;                    scope.puzzle = wordSearchPuzzle(matrix, scope.words);&#10;&#10;                    // link service&#10;                    if (attrs.<span style="background-color:yellow;padding:2px">api</span>) {&#10;                        scope.api = scope.puzzle;&#10;                    }&#10;                });&#10;&#10;                /**
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#9;&#60;ul class=&#34;words&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#60;li ng-repeat=&#34;word in puzzle.words&#34; ng-class=&#34;{&#39;found&#39;: word.found}&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;{{word.name}}&#10;&#9;&#9;&#9;&#9;&#60;/li&#62;&#10;&#9;&#9;&#9;&#60;/ul&#62;&#10;&#9;&#9;&#9;&#60;word-search-puzzle matrix=&#34;matrix&#34; words=&#34;words&#34; <span style="background-color:yellow;padding:2px">api=&#34;puzzle&#34;&#62;</span>&#60;/word-search-puzzle&#62;&#10;&#9;&#9;&#9;&#60;div class=&#34;status&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.solve()&#34; ng-show=&#34;!puzzle.solved&#34; class=&#34;solve&#34;&#62;solve&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#60;strong ng-show=&#34;puzzle.solved&#34; ng-show=&#34;puzzle.solved&#34;&#62;Solved!&#60;/strong&#62;&#10;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#60;/div&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/wordSearchPuzzle.js</h2>
+          <pre>
+            <code class="language-javascript">
+                              scope.$watch(&#39;matrix&#39;, function(matrix) {&#10;                    scope.puzzle = wordSearchPuzzle(matrix, scope.words);&#10;&#10;                    // link service&#10;                    if (attrs.api) {&#10;                        scope.<span style="background-color:yellow;padding:2px">api</span> = scope.puzzle;&#10;                    }&#10;                });&#10;&#10;                /**&#10;                 * Selected items
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#9;&#9;&#60;div class=&#34;src&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;input type=&#34;text&#34; ng-model=&#34;puzzle.src&#34;/&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;div class=&#34;status&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;moves: &#60;strong&#62;{{puzzle.api.moves}}&#60;/strong&#62;&#60;br/&#62;&#10;&#9;&#9;&#9;&#9;&#9;solved: &#60;strong&#62;{{puzzle.api.<span style="background-color:yellow;padding:2px">isSolved</span>()}}&#60;/strong&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;div class=&#34;size&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;rows: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.rows&#34; size=&#34;2&#34;/&#62;&#10;&#9;&#9;&#9;&#9;&#9;cols: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.cols&#34; size=&#34;2&#34;/&#62;&#60;br/&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.shuffle()&#34;&#62;shuffle&#60;/button&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/slidingPuzzle.js</h2>
+          <pre>
+            <code class="language-javascript">
+              &#10;            /**&#10;             * Is solved?&#10;             * @type {Boolean}&#10;             */&#10;            this.<span style="background-color:yellow;padding:2px">isSolved</span> = function() {&#10;                var id = 1;&#10;                for (var row = 0; row &#60; rows; row++) {&#10;                    for (var col = 0; col &#60; cols; col++) {&#10;                        if (this.grid[row][col].id !== id++) {&#10;                            return false;
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#9;&#9;&#60;div class=&#34;status&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;moves: &#60;strong&#62;{{puzzle.api.moves}}&#60;/strong&#62;&#60;br/&#62;&#10;&#9;&#9;&#9;&#9;&#9;solved: &#60;strong&#62;{{puzzle.api.isSolved()}}&#60;/strong&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;div class=&#34;size&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;rows: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.<span style="background-color:yellow;padding:2px">rows</span>&#34; size=&#34;2&#34;/&#62;&#10;&#9;&#9;&#9;&#9;&#9;cols: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.cols&#34; size=&#34;2&#34;/&#62;&#60;br/&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.shuffle()&#34;&#62;shuffle&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.solve()&#34;&#62;solve&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;sliding-puzzle api=&#34;puzzle.api&#34; size=&#34;{{puzzle.rows}}x{{puzzle.cols}}&#34; src=&#34;{{puzzle.src}}&#34;&#62;&#60;/sliding-puzzle&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/app.js</h2>
+          <pre>
+            <code class="language-javascript">
+              /**&#10; * Advanced sliding puzzle controller&#10; */&#10;app.controller(&#39;slidingAdvancedCtrl&#39;, function($scope) {&#10;    $scope.puzzles = [&#10;        { src: &#39;./img/misko.jpg&#39;, title: &#39;Misko Hevery&#39;, <span style="background-color:yellow;padding:2px">rows</span>: 4, cols: 4 },&#10;        { src: &#39;./img/igor.jpg&#39;, title: &#39;Igor Minar&#39;, rows: 3, cols: 3 },&#10;        { src: &#39;./img/vojta.jpg&#39;, title: &#39;Vojta Jina&#39;, rows: 4, cols: 3 }&#10;    ];&#10;});
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#9;&#9;&#60;div class=&#34;status&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;moves: &#60;strong&#62;{{puzzle.api.moves}}&#60;/strong&#62;&#60;br/&#62;&#10;&#9;&#9;&#9;&#9;&#9;solved: &#60;strong&#62;{{puzzle.api.isSolved()}}&#60;/strong&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;div class=&#34;size&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;rows: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.<span style="background-color:yellow;padding:2px">rows</span>&#34; size=&#34;2&#34;/&#62;&#10;&#9;&#9;&#9;&#9;&#9;cols: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.cols&#34; size=&#34;2&#34;/&#62;&#60;br/&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.shuffle()&#34;&#62;shuffle&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.solve()&#34;&#62;solve&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;sliding-puzzle api=&#34;puzzle.api&#34; size=&#34;{{puzzle.rows}}x{{puzzle.cols}}&#34; src=&#34;{{puzzle.src}}&#34;&#62;&#60;/sliding-puzzle&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/app.js</h2>
+          <pre>
+            <code class="language-javascript">
+                   * Advanced sliding puzzle controller&#10;     */&#10;    app.controller(&#39;slidingAdvancedCtrl&#39;, function($scope) {&#10;        $scope.puzzles = [&#10;            { src: &#39;./img/misko.jpg&#39;, title: &#39;Misko Hevery&#39;, rows: 4, cols: 4 },&#10;            { src: &#39;./img/igor.jpg&#39;, title: &#39;Igor Minar&#39;, <span style="background-color:yellow;padding:2px">rows</span>: 3, cols: 3 },&#10;            { src: &#39;./img/vojta.jpg&#39;, title: &#39;Vojta Jina&#39;, rows: 4, cols: 3 }&#10;        ];&#10;    });&#10;&#10;    /**
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#9;&#9;&#60;div class=&#34;status&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;moves: &#60;strong&#62;{{puzzle.api.moves}}&#60;/strong&#62;&#60;br/&#62;&#10;&#9;&#9;&#9;&#9;&#9;solved: &#60;strong&#62;{{puzzle.api.isSolved()}}&#60;/strong&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;div class=&#34;size&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;rows: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.<span style="background-color:yellow;padding:2px">rows</span>&#34; size=&#34;2&#34;/&#62;&#10;&#9;&#9;&#9;&#9;&#9;cols: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.cols&#34; size=&#34;2&#34;/&#62;&#60;br/&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.shuffle()&#34;&#62;shuffle&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.solve()&#34;&#62;solve&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;sliding-puzzle api=&#34;puzzle.api&#34; size=&#34;{{puzzle.rows}}x{{puzzle.cols}}&#34; src=&#34;{{puzzle.src}}&#34;&#62;&#60;/sliding-puzzle&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/app.js</h2>
+          <pre>
+            <code class="language-javascript">
+                   */&#10;    app.controller(&#39;slidingAdvancedCtrl&#39;, function($scope) {&#10;        $scope.puzzles = [&#10;            { src: &#39;./img/misko.jpg&#39;, title: &#39;Misko Hevery&#39;, rows: 4, cols: 4 },&#10;            { src: &#39;./img/igor.jpg&#39;, title: &#39;Igor Minar&#39;, rows: 3, cols: 3 },&#10;            { src: &#39;./img/vojta.jpg&#39;, title: &#39;Vojta Jina&#39;, <span style="background-color:yellow;padding:2px">rows</span>: 4, cols: 3 }&#10;        ];&#10;    });&#10;&#10;    /**&#10;     * Word search puzzle controller
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#9;&#9;&#9;rows: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.rows&#34; size=&#34;2&#34;/&#62;&#10;&#9;&#9;&#9;&#9;&#9;cols: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.cols&#34; size=&#34;2&#34;/&#62;&#60;br/&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.shuffle()&#34;&#62;shuffle&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.solve()&#34;&#62;solve&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;sliding-puzzle api=&#34;puzzle.api&#34; size=&#34;{{puzzle.<span style="background-color:yellow;padding:2px">rows</span>}}x{{puzzle.cols}}&#34; src=&#34;{{puzzle.src}}&#34;&#62;&#60;/sliding-puzzle&#62;&#10;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#60;/fieldset&#62;&#10;&#9;&#60;/script&#62;&#10;&#10;&#9;&#60;script type=&#34;text/ng-template&#34; id=&#34;word-search-puzzle&#34;&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/app.js</h2>
+          <pre>
+            <code class="language-javascript">
+              /**&#10; * Advanced sliding puzzle controller&#10; */&#10;app.controller(&#39;slidingAdvancedCtrl&#39;, function($scope) {&#10;    $scope.puzzles = [&#10;        { src: &#39;./img/misko.jpg&#39;, title: &#39;Misko Hevery&#39;, <span style="background-color:yellow;padding:2px">rows</span>: 4, cols: 4 },&#10;        { src: &#39;./img/igor.jpg&#39;, title: &#39;Igor Minar&#39;, rows: 3, cols: 3 },&#10;        { src: &#39;./img/vojta.jpg&#39;, title: &#39;Vojta Jina&#39;, rows: 4, cols: 3 }&#10;    ];&#10;});
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#9;&#9;&#9;rows: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.rows&#34; size=&#34;2&#34;/&#62;&#10;&#9;&#9;&#9;&#9;&#9;cols: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.cols&#34; size=&#34;2&#34;/&#62;&#60;br/&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.shuffle()&#34;&#62;shuffle&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.solve()&#34;&#62;solve&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;sliding-puzzle api=&#34;puzzle.api&#34; size=&#34;{{puzzle.<span style="background-color:yellow;padding:2px">rows</span>}}x{{puzzle.cols}}&#34; src=&#34;{{puzzle.src}}&#34;&#62;&#60;/sliding-puzzle&#62;&#10;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#60;/fieldset&#62;&#10;&#9;&#60;/script&#62;&#10;&#10;&#9;&#60;script type=&#34;text/ng-template&#34; id=&#34;word-search-puzzle&#34;&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/app.js</h2>
+          <pre>
+            <code class="language-javascript">
+                   * Advanced sliding puzzle controller&#10;     */&#10;    app.controller(&#39;slidingAdvancedCtrl&#39;, function($scope) {&#10;        $scope.puzzles = [&#10;            { src: &#39;./img/misko.jpg&#39;, title: &#39;Misko Hevery&#39;, rows: 4, cols: 4 },&#10;            { src: &#39;./img/igor.jpg&#39;, title: &#39;Igor Minar&#39;, <span style="background-color:yellow;padding:2px">rows</span>: 3, cols: 3 },&#10;            { src: &#39;./img/vojta.jpg&#39;, title: &#39;Vojta Jina&#39;, rows: 4, cols: 3 }&#10;        ];&#10;    });&#10;&#10;    /**
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#9;&#9;&#9;rows: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.rows&#34; size=&#34;2&#34;/&#62;&#10;&#9;&#9;&#9;&#9;&#9;cols: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.cols&#34; size=&#34;2&#34;/&#62;&#60;br/&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.shuffle()&#34;&#62;shuffle&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.solve()&#34;&#62;solve&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;sliding-puzzle api=&#34;puzzle.api&#34; size=&#34;{{puzzle.<span style="background-color:yellow;padding:2px">rows</span>}}x{{puzzle.cols}}&#34; src=&#34;{{puzzle.src}}&#34;&#62;&#60;/sliding-puzzle&#62;&#10;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#60;/fieldset&#62;&#10;&#9;&#60;/script&#62;&#10;&#10;&#9;&#60;script type=&#34;text/ng-template&#34; id=&#34;word-search-puzzle&#34;&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/app.js</h2>
+          <pre>
+            <code class="language-javascript">
+                   */&#10;    app.controller(&#39;slidingAdvancedCtrl&#39;, function($scope) {&#10;        $scope.puzzles = [&#10;            { src: &#39;./img/misko.jpg&#39;, title: &#39;Misko Hevery&#39;, rows: 4, cols: 4 },&#10;            { src: &#39;./img/igor.jpg&#39;, title: &#39;Igor Minar&#39;, rows: 3, cols: 3 },&#10;            { src: &#39;./img/vojta.jpg&#39;, title: &#39;Vojta Jina&#39;, <span style="background-color:yellow;padding:2px">rows</span>: 4, cols: 3 }&#10;        ];&#10;    });&#10;&#10;    /**&#10;     * Word search puzzle controller
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#9;&#9;&#9;moves: &#60;strong&#62;{{puzzle.api.moves}}&#60;/strong&#62;&#60;br/&#62;&#10;&#9;&#9;&#9;&#9;&#9;solved: &#60;strong&#62;{{puzzle.api.isSolved()}}&#60;/strong&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;div class=&#34;size&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;rows: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.rows&#34; size=&#34;2&#34;/&#62;&#10;&#9;&#9;&#9;&#9;&#9;cols: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.<span style="background-color:yellow;padding:2px">cols</span>&#34; size=&#34;2&#34;/&#62;&#60;br/&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.shuffle()&#34;&#62;shuffle&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.solve()&#34;&#62;solve&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;sliding-puzzle api=&#34;puzzle.api&#34; size=&#34;{{puzzle.rows}}x{{puzzle.cols}}&#34; src=&#34;{{puzzle.src}}&#34;&#62;&#60;/sliding-puzzle&#62;&#10;&#9;&#9;&#9;&#60;/div&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/app.js</h2>
+          <pre>
+            <code class="language-javascript">
+              /**&#10; * Advanced sliding puzzle controller&#10; */&#10;app.controller(&#39;slidingAdvancedCtrl&#39;, function($scope) {&#10;    $scope.puzzles = [&#10;        { src: &#39;./img/misko.jpg&#39;, title: &#39;Misko Hevery&#39;, rows: 4, <span style="background-color:yellow;padding:2px">cols</span>: 4 },&#10;        { src: &#39;./img/igor.jpg&#39;, title: &#39;Igor Minar&#39;, rows: 3, cols: 3 },&#10;        { src: &#39;./img/vojta.jpg&#39;, title: &#39;Vojta Jina&#39;, rows: 4, cols: 3 }&#10;    ];&#10;});
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#9;&#9;&#9;moves: &#60;strong&#62;{{puzzle.api.moves}}&#60;/strong&#62;&#60;br/&#62;&#10;&#9;&#9;&#9;&#9;&#9;solved: &#60;strong&#62;{{puzzle.api.isSolved()}}&#60;/strong&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;div class=&#34;size&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;rows: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.rows&#34; size=&#34;2&#34;/&#62;&#10;&#9;&#9;&#9;&#9;&#9;cols: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.<span style="background-color:yellow;padding:2px">cols</span>&#34; size=&#34;2&#34;/&#62;&#60;br/&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.shuffle()&#34;&#62;shuffle&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.solve()&#34;&#62;solve&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;sliding-puzzle api=&#34;puzzle.api&#34; size=&#34;{{puzzle.rows}}x{{puzzle.cols}}&#34; src=&#34;{{puzzle.src}}&#34;&#62;&#60;/sliding-puzzle&#62;&#10;&#9;&#9;&#9;&#60;/div&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/app.js</h2>
+          <pre>
+            <code class="language-javascript">
+                   * Advanced sliding puzzle controller&#10;     */&#10;    app.controller(&#39;slidingAdvancedCtrl&#39;, function($scope) {&#10;        $scope.puzzles = [&#10;            { src: &#39;./img/misko.jpg&#39;, title: &#39;Misko Hevery&#39;, rows: 4, cols: 4 },&#10;            { src: &#39;./img/igor.jpg&#39;, title: &#39;Igor Minar&#39;, rows: 3, <span style="background-color:yellow;padding:2px">cols</span>: 3 },&#10;            { src: &#39;./img/vojta.jpg&#39;, title: &#39;Vojta Jina&#39;, rows: 4, cols: 3 }&#10;        ];&#10;    });&#10;&#10;    /**
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#9;&#9;&#9;moves: &#60;strong&#62;{{puzzle.api.moves}}&#60;/strong&#62;&#60;br/&#62;&#10;&#9;&#9;&#9;&#9;&#9;solved: &#60;strong&#62;{{puzzle.api.isSolved()}}&#60;/strong&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;div class=&#34;size&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;rows: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.rows&#34; size=&#34;2&#34;/&#62;&#10;&#9;&#9;&#9;&#9;&#9;cols: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.<span style="background-color:yellow;padding:2px">cols</span>&#34; size=&#34;2&#34;/&#62;&#60;br/&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.shuffle()&#34;&#62;shuffle&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.solve()&#34;&#62;solve&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;sliding-puzzle api=&#34;puzzle.api&#34; size=&#34;{{puzzle.rows}}x{{puzzle.cols}}&#34; src=&#34;{{puzzle.src}}&#34;&#62;&#60;/sliding-puzzle&#62;&#10;&#9;&#9;&#9;&#60;/div&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/app.js</h2>
+          <pre>
+            <code class="language-javascript">
+                   */&#10;    app.controller(&#39;slidingAdvancedCtrl&#39;, function($scope) {&#10;        $scope.puzzles = [&#10;            { src: &#39;./img/misko.jpg&#39;, title: &#39;Misko Hevery&#39;, rows: 4, cols: 4 },&#10;            { src: &#39;./img/igor.jpg&#39;, title: &#39;Igor Minar&#39;, rows: 3, cols: 3 },&#10;            { src: &#39;./img/vojta.jpg&#39;, title: &#39;Vojta Jina&#39;, rows: 4, <span style="background-color:yellow;padding:2px">cols</span>: 3 }&#10;        ];&#10;    });&#10;&#10;    /**&#10;     * Word search puzzle controller
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#9;&#9;&#9;rows: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.rows&#34; size=&#34;2&#34;/&#62;&#10;&#9;&#9;&#9;&#9;&#9;cols: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.cols&#34; size=&#34;2&#34;/&#62;&#60;br/&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.shuffle()&#34;&#62;shuffle&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.solve()&#34;&#62;solve&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;sliding-puzzle api=&#34;puzzle.api&#34; size=&#34;{{puzzle.rows}}x{{puzzle.<span style="background-color:yellow;padding:2px">cols</span>}}&#34; src=&#34;{{puzzle.src}}&#34;&#62;&#60;/sliding-puzzle&#62;&#10;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#60;/fieldset&#62;&#10;&#9;&#60;/script&#62;&#10;&#10;&#9;&#60;script type=&#34;text/ng-template&#34; id=&#34;word-search-puzzle&#34;&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/app.js</h2>
+          <pre>
+            <code class="language-javascript">
+              /**&#10; * Advanced sliding puzzle controller&#10; */&#10;app.controller(&#39;slidingAdvancedCtrl&#39;, function($scope) {&#10;    $scope.puzzles = [&#10;        { src: &#39;./img/misko.jpg&#39;, title: &#39;Misko Hevery&#39;, rows: 4, <span style="background-color:yellow;padding:2px">cols</span>: 4 },&#10;        { src: &#39;./img/igor.jpg&#39;, title: &#39;Igor Minar&#39;, rows: 3, cols: 3 },&#10;        { src: &#39;./img/vojta.jpg&#39;, title: &#39;Vojta Jina&#39;, rows: 4, cols: 3 }&#10;    ];&#10;});
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#9;&#9;&#9;rows: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.rows&#34; size=&#34;2&#34;/&#62;&#10;&#9;&#9;&#9;&#9;&#9;cols: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.cols&#34; size=&#34;2&#34;/&#62;&#60;br/&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.shuffle()&#34;&#62;shuffle&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.solve()&#34;&#62;solve&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;sliding-puzzle api=&#34;puzzle.api&#34; size=&#34;{{puzzle.rows}}x{{puzzle.<span style="background-color:yellow;padding:2px">cols</span>}}&#34; src=&#34;{{puzzle.src}}&#34;&#62;&#60;/sliding-puzzle&#62;&#10;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#60;/fieldset&#62;&#10;&#9;&#60;/script&#62;&#10;&#10;&#9;&#60;script type=&#34;text/ng-template&#34; id=&#34;word-search-puzzle&#34;&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/app.js</h2>
+          <pre>
+            <code class="language-javascript">
+                   * Advanced sliding puzzle controller&#10;     */&#10;    app.controller(&#39;slidingAdvancedCtrl&#39;, function($scope) {&#10;        $scope.puzzles = [&#10;            { src: &#39;./img/misko.jpg&#39;, title: &#39;Misko Hevery&#39;, rows: 4, cols: 4 },&#10;            { src: &#39;./img/igor.jpg&#39;, title: &#39;Igor Minar&#39;, rows: 3, <span style="background-color:yellow;padding:2px">cols</span>: 3 },&#10;            { src: &#39;./img/vojta.jpg&#39;, title: &#39;Vojta Jina&#39;, rows: 4, cols: 3 }&#10;        ];&#10;    });&#10;&#10;    /**
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#9;&#9;&#9;rows: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.rows&#34; size=&#34;2&#34;/&#62;&#10;&#9;&#9;&#9;&#9;&#9;cols: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.cols&#34; size=&#34;2&#34;/&#62;&#60;br/&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.shuffle()&#34;&#62;shuffle&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.solve()&#34;&#62;solve&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;sliding-puzzle api=&#34;puzzle.api&#34; size=&#34;{{puzzle.rows}}x{{puzzle.<span style="background-color:yellow;padding:2px">cols</span>}}&#34; src=&#34;{{puzzle.src}}&#34;&#62;&#60;/sliding-puzzle&#62;&#10;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#60;/fieldset&#62;&#10;&#9;&#60;/script&#62;&#10;&#10;&#9;&#60;script type=&#34;text/ng-template&#34; id=&#34;word-search-puzzle&#34;&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/app.js</h2>
+          <pre>
+            <code class="language-javascript">
+                   */&#10;    app.controller(&#39;slidingAdvancedCtrl&#39;, function($scope) {&#10;        $scope.puzzles = [&#10;            { src: &#39;./img/misko.jpg&#39;, title: &#39;Misko Hevery&#39;, rows: 4, cols: 4 },&#10;            { src: &#39;./img/igor.jpg&#39;, title: &#39;Igor Minar&#39;, rows: 3, cols: 3 },&#10;            { src: &#39;./img/vojta.jpg&#39;, title: &#39;Vojta Jina&#39;, rows: 4, <span style="background-color:yellow;padding:2px">cols</span>: 3 }&#10;        ];&#10;    });&#10;&#10;    /**&#10;     * Word search puzzle controller
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#9;&#9;&#9;solved: &#60;strong&#62;{{puzzle.api.isSolved()}}&#60;/strong&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;div class=&#34;size&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;rows: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.rows&#34; size=&#34;2&#34;/&#62;&#10;&#9;&#9;&#9;&#9;&#9;cols: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.cols&#34; size=&#34;2&#34;/&#62;&#60;br/&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.<span style="background-color:yellow;padding:2px">shuffle</span>()&#34;&#62;shuffle&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.solve()&#34;&#62;solve&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;sliding-puzzle api=&#34;puzzle.api&#34; size=&#34;{{puzzle.rows}}x{{puzzle.cols}}&#34; src=&#34;{{puzzle.src}}&#34;&#62;&#60;/sliding-puzzle&#62;&#10;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#60;/fieldset&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/slidingPuzzle.js</h2>
+          <pre>
+            <code class="language-javascript">
+                          };&#10;&#10;            /**&#10;             * Shuffles grid&#10;             */&#10;            this.<span style="background-color:yellow;padding:2px">shuffle</span> = function() {&#10;                var tiles = [];&#10;                this.traverse(function(tile) {&#10;                    tiles.push(tile);&#10;                });&#10;                shuffle(tiles);
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#9;&#9;&#9;solved: &#60;strong&#62;{{puzzle.api.isSolved()}}&#60;/strong&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;div class=&#34;size&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;rows: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.rows&#34; size=&#34;2&#34;/&#62;&#10;&#9;&#9;&#9;&#9;&#9;cols: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.cols&#34; size=&#34;2&#34;/&#62;&#60;br/&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.<span style="background-color:yellow;padding:2px">shuffle</span>()&#34;&#62;shuffle&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.solve()&#34;&#62;solve&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;sliding-puzzle api=&#34;puzzle.api&#34; size=&#34;{{puzzle.rows}}x{{puzzle.cols}}&#34; src=&#34;{{puzzle.src}}&#34;&#62;&#60;/sliding-puzzle&#62;&#10;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#60;/fieldset&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/slidingPuzzle.js</h2>
+          <pre>
+            <code class="language-javascript">
+              this.shuffle = function() {&#10;    var tiles = [];&#10;    this.traverse(function(tile) {&#10;        tiles.push(tile);&#10;    });&#10;    <span style="background-color:yellow;padding:2px">shuffle</span>(tiles);&#10;    this.traverse(function(tile, row, col) {&#10;        this.grid[row][col] = tiles.shift();&#10;    });&#10;    this.moves = 0;&#10;};
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#9;&#9;&#9;solved: &#60;strong&#62;{{puzzle.api.isSolved()}}&#60;/strong&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;div class=&#34;size&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;rows: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.rows&#34; size=&#34;2&#34;/&#62;&#10;&#9;&#9;&#9;&#9;&#9;cols: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.cols&#34; size=&#34;2&#34;/&#62;&#60;br/&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.<span style="background-color:yellow;padding:2px">shuffle</span>()&#34;&#62;shuffle&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.solve()&#34;&#62;solve&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;sliding-puzzle api=&#34;puzzle.api&#34; size=&#34;{{puzzle.rows}}x{{puzzle.cols}}&#34; src=&#34;{{puzzle.src}}&#34;&#62;&#60;/sliding-puzzle&#62;&#10;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#60;/fieldset&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/slidingPuzzle.js</h2>
+          <pre>
+            <code class="language-javascript">
+                                          height: height + &#39;px&#39;,&#10;                            background: (tile.empty ? &#39;none&#39; : &#34;url(&#39;&#34; + scope.src + &#34;&#39;) no-repeat -&#34; + (col * width) + &#39;px -&#39; + (row * height) + &#39;px&#39;)&#10;                        };&#10;                    });&#10;&#10;                    scope.puzzle.<span style="background-color:yellow;padding:2px">shuffle</span>();&#10;                }&#10;&#10;                attrs.$observe(&#39;size&#39;, function(size) {&#10;                    size = size.split(&#39;x&#39;);&#10;                    if (size[0] &#62;= 2 &#38;&#38; size[1] &#62;= 2) {
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#9;&#9;&#9;solved: &#60;strong&#62;{{puzzle.api.isSolved()}}&#60;/strong&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;div class=&#34;size&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;rows: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.rows&#34; size=&#34;2&#34;/&#62;&#10;&#9;&#9;&#9;&#9;&#9;cols: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.cols&#34; size=&#34;2&#34;/&#62;&#60;br/&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.shuffle()&#34;&#62;<span style="background-color:yellow;padding:2px">shuffle</span>&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.solve()&#34;&#62;solve&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;sliding-puzzle api=&#34;puzzle.api&#34; size=&#34;{{puzzle.rows}}x{{puzzle.cols}}&#34; src=&#34;{{puzzle.src}}&#34;&#62;&#60;/sliding-puzzle&#62;&#10;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#60;/fieldset&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/slidingPuzzle.js</h2>
+          <pre>
+            <code class="language-javascript">
+                          };&#10;&#10;            /**&#10;             * Shuffles grid&#10;             */&#10;            this.<span style="background-color:yellow;padding:2px">shuffle</span> = function() {&#10;                var tiles = [];&#10;                this.traverse(function(tile) {&#10;                    tiles.push(tile);&#10;                });&#10;                shuffle(tiles);
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#9;&#9;&#9;solved: &#60;strong&#62;{{puzzle.api.isSolved()}}&#60;/strong&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;div class=&#34;size&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;rows: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.rows&#34; size=&#34;2&#34;/&#62;&#10;&#9;&#9;&#9;&#9;&#9;cols: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.cols&#34; size=&#34;2&#34;/&#62;&#60;br/&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.shuffle()&#34;&#62;<span style="background-color:yellow;padding:2px">shuffle</span>&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.solve()&#34;&#62;solve&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;sliding-puzzle api=&#34;puzzle.api&#34; size=&#34;{{puzzle.rows}}x{{puzzle.cols}}&#34; src=&#34;{{puzzle.src}}&#34;&#62;&#60;/sliding-puzzle&#62;&#10;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#60;/fieldset&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/slidingPuzzle.js</h2>
+          <pre>
+            <code class="language-javascript">
+              this.shuffle = function() {&#10;    var tiles = [];&#10;    this.traverse(function(tile) {&#10;        tiles.push(tile);&#10;    });&#10;    <span style="background-color:yellow;padding:2px">shuffle</span>(tiles);&#10;    this.traverse(function(tile, row, col) {&#10;        this.grid[row][col] = tiles.shift();&#10;    });&#10;    this.moves = 0;&#10;};
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#9;&#9;&#9;solved: &#60;strong&#62;{{puzzle.api.isSolved()}}&#60;/strong&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;div class=&#34;size&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;rows: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.rows&#34; size=&#34;2&#34;/&#62;&#10;&#9;&#9;&#9;&#9;&#9;cols: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.cols&#34; size=&#34;2&#34;/&#62;&#60;br/&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.shuffle()&#34;&#62;<span style="background-color:yellow;padding:2px">shuffle</span>&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.solve()&#34;&#62;solve&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;sliding-puzzle api=&#34;puzzle.api&#34; size=&#34;{{puzzle.rows}}x{{puzzle.cols}}&#34; src=&#34;{{puzzle.src}}&#34;&#62;&#60;/sliding-puzzle&#62;&#10;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#60;/fieldset&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/slidingPuzzle.js</h2>
+          <pre>
+            <code class="language-javascript">
+                                          height: height + &#39;px&#39;,&#10;                            background: (tile.empty ? &#39;none&#39; : &#34;url(&#39;&#34; + scope.src + &#34;&#39;) no-repeat -&#34; + (col * width) + &#39;px -&#39; + (row * height) + &#39;px&#39;)&#10;                        };&#10;                    });&#10;&#10;                    scope.puzzle.<span style="background-color:yellow;padding:2px">shuffle</span>();&#10;                }&#10;&#10;                attrs.$observe(&#39;size&#39;, function(size) {&#10;                    size = size.split(&#39;x&#39;);&#10;                    if (size[0] &#62;= 2 &#38;&#38; size[1] &#62;= 2) {
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;div class=&#34;size&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;rows: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.rows&#34; size=&#34;2&#34;/&#62;&#10;&#9;&#9;&#9;&#9;&#9;cols: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.cols&#34; size=&#34;2&#34;/&#62;&#60;br/&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.shuffle()&#34;&#62;shuffle&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.<span style="background-color:yellow;padding:2px">solve</span>()&#34;&#62;solve&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;sliding-puzzle api=&#34;puzzle.api&#34; size=&#34;{{puzzle.rows}}x{{puzzle.cols}}&#34; src=&#34;{{puzzle.src}}&#34;&#62;&#60;/sliding-puzzle&#62;&#10;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#60;/fieldset&#62;&#10;&#9;&#60;/script&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/slidingPuzzle.js</h2>
+          <pre>
+            <code class="language-javascript">
+                          };&#10;&#10;            /**&#10;             * Solves puzzle&#10;             */&#10;            this.<span style="background-color:yellow;padding:2px">solve</span> = function() {&#10;                var tiles = [];&#10;                this.traverse(function(tile) {&#10;                    tiles.push(tile);&#10;                });&#10;                tiles.sort(function(x, y) {
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;div class=&#34;size&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;rows: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.rows&#34; size=&#34;2&#34;/&#62;&#10;&#9;&#9;&#9;&#9;&#9;cols: &#60;input type=&#34;text&#34; ng-model=&#34;puzzle.cols&#34; size=&#34;2&#34;/&#62;&#60;br/&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.shuffle()&#34;&#62;shuffle&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.api.solve()&#34;&#62;<span style="background-color:yellow;padding:2px">solve</span>&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#9;&#9;&#60;sliding-puzzle api=&#34;puzzle.api&#34; size=&#34;{{puzzle.rows}}x{{puzzle.cols}}&#34; src=&#34;{{puzzle.src}}&#34;&#62;&#60;/sliding-puzzle&#62;&#10;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#60;/fieldset&#62;&#10;&#9;&#60;/script&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/slidingPuzzle.js</h2>
+          <pre>
+            <code class="language-javascript">
+                          };&#10;&#10;            /**&#10;             * Solves puzzle&#10;             */&#10;            this.<span style="background-color:yellow;padding:2px">solve</span> = function() {&#10;                var tiles = [];&#10;                this.traverse(function(tile) {&#10;                    tiles.push(tile);&#10;                });&#10;                tiles.sort(function(x, y) {
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#60;/fieldset&#62;&#10;&#9;&#60;/script&#62;&#10;&#10;&#9;&#60;script type=&#34;text/ng-template&#34; id=&#34;word-search-puzzle&#34;&#62;&#10;&#9;&#9;&#60;div id=&#34;word-search&#34; <span style="background-color:yellow;padding:2px">ng-controller=&#34;wordSearchCtrl&#34;&#62;</span>&#10;&#9;&#9;&#9;&#60;ul class=&#34;words&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#60;li ng-repeat=&#34;word in puzzle.words&#34; ng-class=&#34;{&#39;found&#39;: word.found}&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;{{word.name}}&#10;&#9;&#9;&#9;&#9;&#60;/li&#62;&#10;&#9;&#9;&#9;&#60;/ul&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/app.js</h2>
+          <pre>
+            <code class="language-javascript">
+                  });&#10;&#10;    /**&#10;     * Word search puzzle controller&#10;     */&#10;    app.controller(<span style="background-color:yellow;padding:2px">&#39;wordSearchCtrl&#39;</span>, function($scope) {&#10;        $scope.matrix = [&#10;            [&#39;N&#39;, &#39;I&#39;, &#39;G&#39;, &#39;O&#39;, &#39;R&#39;, &#39;Y&#39;, &#39;G&#39;, &#39;S&#39;, &#39;T&#39;, &#39;T&#39;, &#39;A&#39;, &#39;N&#39;],&#10;            [&#39;O&#39;, &#39;G&#39;, &#39;G&#39;, &#39;U&#39;, &#39;L&#39;, &#39;C&#39;, &#39;O&#39;, &#39;E&#39;, &#39;P&#39;, &#39;E&#39;, &#39;A&#39;, &#39;S&#39;],&#10;            [&#39;I&#39;, &#39;N&#39;, &#39;N&#39;, &#39;R&#39;, &#39;M&#39;, &#39;N&#39;, &#39;O&#39;, &#39;R&#39;, &#39;I&#39;, &#39;M&#39;, &#39;E&#39;, &#39;C&#39;],&#10;            [&#39;T&#39;, &#39;I&#39;, &#39;A&#39;, &#39;I&#39;, &#39;O&#39;, &#39;E&#39;, &#39;G&#39;, &#39;V&#39;, &#39;R&#39;, &#39;P&#39;, &#39;V&#39;, &#39;E&#39;],
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#60;/script&#62;&#10;&#10;&#9;&#60;script type=&#34;text/ng-template&#34; id=&#34;word-search-puzzle&#34;&#62;&#10;&#9;&#9;&#60;div id=&#34;word-search&#34; ng-controller=&#34;wordSearchCtrl&#34;&#62;&#10;&#9;&#9;&#9;&#60;ul class=&#34;words&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#60;li ng-repeat=&#34;word in puzzle.<span style="background-color:yellow;padding:2px">words</span>&#34; ng-class=&#34;{&#39;found&#39;: word.found}&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;{{word.name}}&#10;&#9;&#9;&#9;&#9;&#60;/li&#62;&#10;&#9;&#9;&#9;&#60;/ul&#62;&#10;&#9;&#9;&#9;&#60;word-search-puzzle matrix=&#34;matrix&#34; words=&#34;words&#34; api=&#34;puzzle&#34;&#62;&#60;/word-search-puzzle&#62;&#10;&#9;&#9;&#9;&#60;div class=&#34;status&#34;&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/wordSearchPuzzle.js</h2>
+          <pre>
+            <code class="language-javascript">
+              &#10;            /**&#10;             * Words&#10;             * @type {Array}&#10;             */&#10;            this.<span style="background-color:yellow;padding:2px">words</span> = [];&#10;&#10;            /**&#10;             * Is solved?&#10;             * @type {Boolean}&#10;             */
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#60;/script&#62;&#10;&#10;&#9;&#60;script type=&#34;text/ng-template&#34; id=&#34;word-search-puzzle&#34;&#62;&#10;&#9;&#9;&#60;div id=&#34;word-search&#34; ng-controller=&#34;wordSearchCtrl&#34;&#62;&#10;&#9;&#9;&#9;&#60;ul class=&#34;words&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#60;li ng-repeat=&#34;word in puzzle.<span style="background-color:yellow;padding:2px">words</span>&#34; ng-class=&#34;{&#39;found&#39;: word.found}&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;{{word.name}}&#10;&#9;&#9;&#9;&#9;&#60;/li&#62;&#10;&#9;&#9;&#9;&#60;/ul&#62;&#10;&#9;&#9;&#9;&#60;word-search-puzzle matrix=&#34;matrix&#34; words=&#34;words&#34; api=&#34;puzzle&#34;&#62;&#60;/word-search-puzzle&#62;&#10;&#9;&#9;&#9;&#60;div class=&#34;status&#34;&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/wordSearchPuzzle.js</h2>
+          <pre>
+            <code class="language-javascript">
+                                  maxCol = col;&#10;                }, this);&#10;                maxRow = row;&#10;            }, this);&#10;            angular.forEach(words, function(word) {&#10;                this.<span style="background-color:yellow;padding:2px">words</span>.push({&#10;                    name: word&#10;                });&#10;            }, this);&#10;&#10;            /**
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#9;&#60;ul class=&#34;words&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#60;li ng-repeat=&#34;word in puzzle.words&#34; ng-class=&#34;{&#39;found&#39;: word.found}&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;{{word.name}}&#10;&#9;&#9;&#9;&#9;&#60;/li&#62;&#10;&#9;&#9;&#9;&#60;/ul&#62;&#10;&#9;&#9;&#9;&#60;word-search-puzzle matrix=&#34;matrix&#34; <span style="background-color:yellow;padding:2px">words=&#34;words&#34; </span>api=&#34;puzzle&#34;&#62;&#60;/word-search-puzzle&#62;&#10;&#9;&#9;&#9;&#60;div class=&#34;status&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.solve()&#34; ng-show=&#34;!puzzle.solved&#34; class=&#34;solve&#34;&#62;solve&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#60;strong ng-show=&#34;puzzle.solved&#34; ng-show=&#34;puzzle.solved&#34;&#62;Solved!&#60;/strong&#62;&#10;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#60;/div&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/wordSearchPuzzle.js</h2>
+          <pre>
+            <code class="language-javascript">
+                                  maxCol = col;&#10;                }, this);&#10;                maxRow = row;&#10;            }, this);&#10;            angular.forEach(words, function(word) {&#10;                this.<span style="background-color:yellow;padding:2px">words</span>.push({&#10;                    name: word&#10;                });&#10;            }, this);&#10;&#10;            /**
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#60;/script&#62;&#10;&#10;&#9;&#60;script type=&#34;text/ng-template&#34; id=&#34;word-search-puzzle&#34;&#62;&#10;&#9;&#9;&#60;div id=&#34;word-search&#34; ng-controller=&#34;wordSearchCtrl&#34;&#62;&#10;&#9;&#9;&#9;&#60;ul class=&#34;words&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#60;li ng-repeat=&#34;<span style="background-color:yellow;padding:2px">word</span> in puzzle.words&#34; ng-class=&#34;{&#39;found&#39;: word.found}&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;{{word.name}}&#10;&#9;&#9;&#9;&#9;&#60;/li&#62;&#10;&#9;&#9;&#9;&#60;/ul&#62;&#10;&#9;&#9;&#9;&#60;word-search-puzzle matrix=&#34;matrix&#34; words=&#34;words&#34; api=&#34;puzzle&#34;&#62;&#60;/word-search-puzzle&#62;&#10;&#9;&#9;&#9;&#60;div class=&#34;status&#34;&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/wordSearchPuzzle.js</h2>
+          <pre>
+            <code class="language-javascript">
+                      this.matrix[row].push(item);&#10;        maxCol = col;&#10;    }, this);&#10;    maxRow = row;&#10;}, this);&#10;angular.forEach(words, function(<span style="background-color:yellow;padding:2px">word</span>) {&#10;    this.words.push({&#10;        name: word&#10;    });&#10;}, this);
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#60;/script&#62;&#10;&#10;&#9;&#60;script type=&#34;text/ng-template&#34; id=&#34;word-search-puzzle&#34;&#62;&#10;&#9;&#9;&#60;div id=&#34;word-search&#34; ng-controller=&#34;wordSearchCtrl&#34;&#62;&#10;&#9;&#9;&#9;&#60;ul class=&#34;words&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#60;li ng-repeat=&#34;word in puzzle.words&#34; ng-class=&#34;{<span style="background-color:yellow;padding:2px">&#39;found&#39;</span>: word.found}&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;{{word.name}}&#10;&#9;&#9;&#9;&#9;&#60;/li&#62;&#10;&#9;&#9;&#9;&#60;/ul&#62;&#10;&#9;&#9;&#9;&#60;word-search-puzzle matrix=&#34;matrix&#34; words=&#34;words&#34; api=&#34;puzzle&#34;&#62;&#60;/word-search-puzzle&#62;&#10;&#9;&#9;&#9;&#60;div class=&#34;status&#34;&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/wordSearchPuzzle.js</h2>
+          <pre>
+            <code class="language-javascript">
+                              words.push(words[0].split(&#39;&#39;).reverse().join(&#39;&#39;));&#9;// word in reverse order (when selecting)&#10;&#10;                // check words&#10;                this.solved = true;&#10;                angular.forEach(this.words, function(word) {&#10;                    if (word.<span style="background-color:yellow;padding:2px">found</span>) {&#10;                        return;&#10;                    }&#10;                    angular.forEach(words, function(itemWord) {&#10;                        if (word.name === itemWord) {&#10;                            word.found = true;
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#60;/script&#62;&#10;&#10;&#9;&#60;script type=&#34;text/ng-template&#34; id=&#34;word-search-puzzle&#34;&#62;&#10;&#9;&#9;&#60;div id=&#34;word-search&#34; ng-controller=&#34;wordSearchCtrl&#34;&#62;&#10;&#9;&#9;&#9;&#60;ul class=&#34;words&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#60;li ng-repeat=&#34;word in puzzle.words&#34; ng-class=&#34;{<span style="background-color:yellow;padding:2px">&#39;found&#39;</span>: word.found}&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;{{word.name}}&#10;&#9;&#9;&#9;&#9;&#60;/li&#62;&#10;&#9;&#9;&#9;&#60;/ul&#62;&#10;&#9;&#9;&#9;&#60;word-search-puzzle matrix=&#34;matrix&#34; words=&#34;words&#34; api=&#34;puzzle&#34;&#62;&#60;/word-search-puzzle&#62;&#10;&#9;&#9;&#9;&#60;div class=&#34;status&#34;&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/wordSearchPuzzle.js</h2>
+          <pre>
+            <code class="language-javascript">
+              if (word.found) {&#10;    return;&#10;}&#10;angular.forEach(words, function(itemWord) {&#10;    if (word.name === itemWord) {&#10;        word.<span style="background-color:yellow;padding:2px">found</span> = true;&#10;        angular.forEach(items, function(item) {&#10;            item.found = true;&#10;        });&#10;    }&#10;});
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#60;/script&#62;&#10;&#10;&#9;&#60;script type=&#34;text/ng-template&#34; id=&#34;word-search-puzzle&#34;&#62;&#10;&#9;&#9;&#60;div id=&#34;word-search&#34; ng-controller=&#34;wordSearchCtrl&#34;&#62;&#10;&#9;&#9;&#9;&#60;ul class=&#34;words&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#60;li ng-repeat=&#34;word in puzzle.words&#34; ng-class=&#34;{<span style="background-color:yellow;padding:2px">&#39;found&#39;</span>: word.found}&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;{{word.name}}&#10;&#9;&#9;&#9;&#9;&#60;/li&#62;&#10;&#9;&#9;&#9;&#60;/ul&#62;&#10;&#9;&#9;&#9;&#60;word-search-puzzle matrix=&#34;matrix&#34; words=&#34;words&#34; api=&#34;puzzle&#34;&#62;&#60;/word-search-puzzle&#62;&#10;&#9;&#9;&#9;&#60;div class=&#34;status&#34;&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/wordSearchPuzzle.js</h2>
+          <pre>
+            <code class="language-javascript">
+              }&#10;angular.forEach(words, function(itemWord) {&#10;    if (word.name === itemWord) {&#10;        word.found = true;&#10;        angular.forEach(items, function(item) {&#10;            item.<span style="background-color:yellow;padding:2px">found</span> = true;&#10;        });&#10;    }&#10;});&#10;if (!word.found) {&#10;    this.solved = false;
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#60;/script&#62;&#10;&#10;&#9;&#60;script type=&#34;text/ng-template&#34; id=&#34;word-search-puzzle&#34;&#62;&#10;&#9;&#9;&#60;div id=&#34;word-search&#34; ng-controller=&#34;wordSearchCtrl&#34;&#62;&#10;&#9;&#9;&#9;&#60;ul class=&#34;words&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#60;li ng-repeat=&#34;word in puzzle.words&#34; ng-class=&#34;{<span style="background-color:yellow;padding:2px">&#39;found&#39;</span>: word.found}&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;{{word.name}}&#10;&#9;&#9;&#9;&#9;&#60;/li&#62;&#10;&#9;&#9;&#9;&#60;/ul&#62;&#10;&#9;&#9;&#9;&#60;word-search-puzzle matrix=&#34;matrix&#34; words=&#34;words&#34; api=&#34;puzzle&#34;&#62;&#60;/word-search-puzzle&#62;&#10;&#9;&#9;&#9;&#60;div class=&#34;status&#34;&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/wordSearchPuzzle.js</h2>
+          <pre>
+            <code class="language-javascript">
+                              angular.forEach(items, function(item) {&#10;                    item.found = true;&#10;                });&#10;            }&#10;        });&#10;        if (!word.<span style="background-color:yellow;padding:2px">found</span>) {&#10;            this.solved = false;&#10;        }&#10;    }, this);&#10;};
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#60;/script&#62;&#10;&#10;&#9;&#60;script type=&#34;text/ng-template&#34; id=&#34;word-search-puzzle&#34;&#62;&#10;&#9;&#9;&#60;div id=&#34;word-search&#34; ng-controller=&#34;wordSearchCtrl&#34;&#62;&#10;&#9;&#9;&#9;&#60;ul class=&#34;words&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#60;li ng-repeat=&#34;word in puzzle.words&#34; ng-class=&#34;{&#39;found&#39;: word.<span style="background-color:yellow;padding:2px">found</span>}&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;{{word.name}}&#10;&#9;&#9;&#9;&#9;&#60;/li&#62;&#10;&#9;&#9;&#9;&#60;/ul&#62;&#10;&#9;&#9;&#9;&#60;word-search-puzzle matrix=&#34;matrix&#34; words=&#34;words&#34; api=&#34;puzzle&#34;&#62;&#60;/word-search-puzzle&#62;&#10;&#9;&#9;&#9;&#60;div class=&#34;status&#34;&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/wordSearchPuzzle.js</h2>
+          <pre>
+            <code class="language-javascript">
+                              words.push(words[0].split(&#39;&#39;).reverse().join(&#39;&#39;));&#9;// word in reverse order (when selecting)&#10;&#10;                // check words&#10;                this.solved = true;&#10;                angular.forEach(this.words, function(word) {&#10;                    if (word.<span style="background-color:yellow;padding:2px">found</span>) {&#10;                        return;&#10;                    }&#10;                    angular.forEach(words, function(itemWord) {&#10;                        if (word.name === itemWord) {&#10;                            word.found = true;
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#60;/script&#62;&#10;&#10;&#9;&#60;script type=&#34;text/ng-template&#34; id=&#34;word-search-puzzle&#34;&#62;&#10;&#9;&#9;&#60;div id=&#34;word-search&#34; ng-controller=&#34;wordSearchCtrl&#34;&#62;&#10;&#9;&#9;&#9;&#60;ul class=&#34;words&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#60;li ng-repeat=&#34;word in puzzle.words&#34; ng-class=&#34;{&#39;found&#39;: word.<span style="background-color:yellow;padding:2px">found</span>}&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;{{word.name}}&#10;&#9;&#9;&#9;&#9;&#60;/li&#62;&#10;&#9;&#9;&#9;&#60;/ul&#62;&#10;&#9;&#9;&#9;&#60;word-search-puzzle matrix=&#34;matrix&#34; words=&#34;words&#34; api=&#34;puzzle&#34;&#62;&#60;/word-search-puzzle&#62;&#10;&#9;&#9;&#9;&#60;div class=&#34;status&#34;&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/wordSearchPuzzle.js</h2>
+          <pre>
+            <code class="language-javascript">
+              if (word.found) {&#10;    return;&#10;}&#10;angular.forEach(words, function(itemWord) {&#10;    if (word.name === itemWord) {&#10;        word.<span style="background-color:yellow;padding:2px">found</span> = true;&#10;        angular.forEach(items, function(item) {&#10;            item.found = true;&#10;        });&#10;    }&#10;});
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#60;/script&#62;&#10;&#10;&#9;&#60;script type=&#34;text/ng-template&#34; id=&#34;word-search-puzzle&#34;&#62;&#10;&#9;&#9;&#60;div id=&#34;word-search&#34; ng-controller=&#34;wordSearchCtrl&#34;&#62;&#10;&#9;&#9;&#9;&#60;ul class=&#34;words&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#60;li ng-repeat=&#34;word in puzzle.words&#34; ng-class=&#34;{&#39;found&#39;: word.<span style="background-color:yellow;padding:2px">found</span>}&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;{{word.name}}&#10;&#9;&#9;&#9;&#9;&#60;/li&#62;&#10;&#9;&#9;&#9;&#60;/ul&#62;&#10;&#9;&#9;&#9;&#60;word-search-puzzle matrix=&#34;matrix&#34; words=&#34;words&#34; api=&#34;puzzle&#34;&#62;&#60;/word-search-puzzle&#62;&#10;&#9;&#9;&#9;&#60;div class=&#34;status&#34;&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/wordSearchPuzzle.js</h2>
+          <pre>
+            <code class="language-javascript">
+              }&#10;angular.forEach(words, function(itemWord) {&#10;    if (word.name === itemWord) {&#10;        word.found = true;&#10;        angular.forEach(items, function(item) {&#10;            item.<span style="background-color:yellow;padding:2px">found</span> = true;&#10;        });&#10;    }&#10;});&#10;if (!word.found) {&#10;    this.solved = false;
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#60;/script&#62;&#10;&#10;&#9;&#60;script type=&#34;text/ng-template&#34; id=&#34;word-search-puzzle&#34;&#62;&#10;&#9;&#9;&#60;div id=&#34;word-search&#34; ng-controller=&#34;wordSearchCtrl&#34;&#62;&#10;&#9;&#9;&#9;&#60;ul class=&#34;words&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#60;li ng-repeat=&#34;word in puzzle.words&#34; ng-class=&#34;{&#39;found&#39;: word.<span style="background-color:yellow;padding:2px">found</span>}&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;{{word.name}}&#10;&#9;&#9;&#9;&#9;&#60;/li&#62;&#10;&#9;&#9;&#9;&#60;/ul&#62;&#10;&#9;&#9;&#9;&#60;word-search-puzzle matrix=&#34;matrix&#34; words=&#34;words&#34; api=&#34;puzzle&#34;&#62;&#60;/word-search-puzzle&#62;&#10;&#9;&#9;&#9;&#60;div class=&#34;status&#34;&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/wordSearchPuzzle.js</h2>
+          <pre>
+            <code class="language-javascript">
+                              angular.forEach(items, function(item) {&#10;                    item.found = true;&#10;                });&#10;            }&#10;        });&#10;        if (!word.<span style="background-color:yellow;padding:2px">found</span>) {&#10;            this.solved = false;&#10;        }&#10;    }, this);&#10;};
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#9;&#60;ul class=&#34;words&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#60;li ng-repeat=&#34;word in puzzle.words&#34; ng-class=&#34;{&#39;found&#39;: word.found}&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#9;{{word.name}}&#10;&#9;&#9;&#9;&#9;&#60;/li&#62;&#10;&#9;&#9;&#9;&#60;/ul&#62;&#10;&#9;&#9;&#9;&#60;word-search-puzzle <span style="background-color:yellow;padding:2px">matrix=&#34;matrix&#34; </span>words=&#34;words&#34; api=&#34;puzzle&#34;&#62;&#60;/word-search-puzzle&#62;&#10;&#9;&#9;&#9;&#60;div class=&#34;status&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.solve()&#34; ng-show=&#34;!puzzle.solved&#34; class=&#34;solve&#34;&#62;solve&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#60;strong ng-show=&#34;puzzle.solved&#34; ng-show=&#34;puzzle.solved&#34;&#62;Solved!&#60;/strong&#62;&#10;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#60;/div&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/wordSearchPuzzle.js</h2>
+          <pre>
+            <code class="language-javascript">
+                          },&#10;            link: function(scope, element, attrs) {&#10;                var selectFrom;&#10;&#10;                // setup puzzle&#10;                scope.$watch(&#39;matrix&#39;, function(<span style="background-color:yellow;padding:2px">matrix</span>) {&#10;                    scope.puzzle = wordSearchPuzzle(matrix, scope.words);&#10;&#10;                    // link service&#10;                    if (attrs.api) {&#10;                        scope.api = scope.puzzle;
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#9;&#9;&#9;{{word.name}}&#10;&#9;&#9;&#9;&#9;&#60;/li&#62;&#10;&#9;&#9;&#9;&#60;/ul&#62;&#10;&#9;&#9;&#9;&#60;word-search-puzzle matrix=&#34;matrix&#34; words=&#34;words&#34; api=&#34;puzzle&#34;&#62;&#60;/word-search-puzzle&#62;&#10;&#9;&#9;&#9;&#60;div class=&#34;status&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.solve()&#34; ng-show=&#34;!puzzle.<span style="background-color:yellow;padding:2px">solved</span>&#34; class=&#34;solve&#34;&#62;solve&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#60;strong ng-show=&#34;puzzle.solved&#34; ng-show=&#34;puzzle.solved&#34;&#62;Solved!&#60;/strong&#62;&#10;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#60;/div&#62;&#10;&#9;&#60;/script&#62;&#10;&#60;/body&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/wordSearchPuzzle.js</h2>
+          <pre>
+            <code class="language-javascript">
+                                              item.found = true;&#10;                            });&#10;                        }&#10;                    });&#10;                    if (!word.found) {&#10;                        this.<span style="background-color:yellow;padding:2px">solved</span> = false;&#10;                    }&#10;                }, this);&#10;            };&#10;&#10;            /**
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#9;&#9;&#60;/li&#62;&#10;&#9;&#9;&#9;&#60;/ul&#62;&#10;&#9;&#9;&#9;&#60;word-search-puzzle matrix=&#34;matrix&#34; words=&#34;words&#34; api=&#34;puzzle&#34;&#62;&#60;/word-search-puzzle&#62;&#10;&#9;&#9;&#9;&#60;div class=&#34;status&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.solve()&#34; ng-show=&#34;!puzzle.solved&#34; class=&#34;solve&#34;&#62;solve&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#60;strong ng-show=&#34;puzzle.<span style="background-color:yellow;padding:2px">solved</span>&#34; ng-show=&#34;puzzle.solved&#34;&#62;Solved!&#60;/strong&#62;&#10;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#60;/div&#62;&#10;&#9;&#60;/script&#62;&#10;&#60;/body&#62;&#10;&#60;/html&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/wordSearchPuzzle.js</h2>
+          <pre>
+            <code class="language-javascript">
+                                              item.found = true;&#10;                            });&#10;                        }&#10;                    });&#10;                    if (!word.found) {&#10;                        this.<span style="background-color:yellow;padding:2px">solved</span> = false;&#10;                    }&#10;                }, this);&#10;            };&#10;&#10;            /**
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+              &#9;&#9;&#9;&#9;&#60;/li&#62;&#10;&#9;&#9;&#9;&#60;/ul&#62;&#10;&#9;&#9;&#9;&#60;word-search-puzzle matrix=&#34;matrix&#34; words=&#34;words&#34; api=&#34;puzzle&#34;&#62;&#60;/word-search-puzzle&#62;&#10;&#9;&#9;&#9;&#60;div class=&#34;status&#34;&#62;&#10;&#9;&#9;&#9;&#9;&#60;button ng-click=&#34;puzzle.solve()&#34; ng-show=&#34;!puzzle.solved&#34; class=&#34;solve&#34;&#62;solve&#60;/button&#62;&#10;&#9;&#9;&#9;&#9;&#60;strong ng-show=&#34;puzzle.solved&#34; ng-show=&#34;puzzle.<span style="background-color:yellow;padding:2px">solved</span>&#34;&#62;Solved!&#60;/strong&#62;&#10;&#9;&#9;&#9;&#60;/div&#62;&#10;&#9;&#9;&#60;/div&#62;&#10;&#9;&#60;/script&#62;&#10;&#60;/body&#62;&#10;&#60;/html&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/angular_puzzle/wordSearchPuzzle.js</h2>
+          <pre>
+            <code class="language-javascript">
+                                              item.found = true;&#10;                            });&#10;                        }&#10;                    });&#10;                    if (!word.found) {&#10;                        this.<span style="background-color:yellow;padding:2px">solved</span> = false;&#10;                    }&#10;                }, this);&#10;            };&#10;&#10;            /**
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/highlight.pack.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+      $('pre code').each(function(i, e) {
+        console.log(e)
+        hljs.highlightBlock(e);
+      });
+    });
+    </script>
+  </body>
+</html>

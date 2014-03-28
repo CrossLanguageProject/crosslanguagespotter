@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cross Language Spotter - Debug Interface</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/highlightstyles/default.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+  <body>
+    <div class="container">
+      <h1> Cross Language Relations - Console Log</h1>
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/services/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+                  &#60;body&#62;&#10;&#10;        &#60;form id=&#34;main&#34; ng-app ng-controller=&#34;myservices&#34;&#62;&#10;            &#60;h1&#62;My Services&#60;/h1&#62;&#10;&#10;            &#60;ul <span style="background-color:yellow;padding:2px">id=&#34;services&#34;&#62;</span>&#10;                &#60;!-- The services will be inserted here --&#62;&#10;                &#60;li ng-repeat=&#34;service in services&#34;&#62;&#10;                &#60;/li&#62;&#10;            &#60;/ul&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/services/script.js</h2>
+          <pre>
+            <code class="language-javascript">
+              function myservices($scope){&#10;    $scope.<span style="background-color:yellow;padding:2px">services</span>=[&#10;        { title: &#39;web development&#39;, price: 200},&#10;        { title: &#39;web design&#39;, price: 250},&#10;        { title: &#39;photography&#39;, price: 100},&#10;        { title: &#39;coffee drinking&#39;, price: 10}];&#10;    $scope.total=function(){
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/services/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+                  &#60;body&#62;&#10;&#10;        &#60;form id=&#34;main&#34; ng-app ng-controller=&#34;myservices&#34;&#62;&#10;            &#60;h1&#62;My Services&#60;/h1&#62;&#10;&#10;            &#60;ul <span style="background-color:yellow;padding:2px">id=&#34;services&#34;&#62;</span>&#10;                &#60;!-- The services will be inserted here --&#62;&#10;                &#60;li ng-repeat=&#34;service in services&#34;&#62;&#10;                &#60;/li&#62;&#10;            &#60;/ul&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/services/script.js</h2>
+          <pre>
+            <code class="language-javascript">
+                  { title: &#39;web design&#39;, price: 250},&#10;    { title: &#39;photography&#39;, price: 100},&#10;    { title: &#39;coffee drinking&#39;, price: 10}];&#10;$scope.total=function(){&#10;    var t = 0;&#10;    angular.forEach($scope.<span style="background-color:yellow;padding:2px">services</span>, function(s){&#10;        if(s.selected)&#10;            t+=s.price;&#10;    });&#10;    return t;&#10;};
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/services/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+                      &#60;form id=&#34;main&#34; ng-app ng-controller=&#34;myservices&#34;&#62;&#10;            &#60;h1&#62;My Services&#60;/h1&#62;&#10;&#10;            &#60;ul id=&#34;services&#34;&#62;&#10;                &#60;!-- The services will be inserted here --&#62;&#10;                &#60;li ng-repeat=&#34;service in <span style="background-color:yellow;padding:2px">services</span>&#34;&#62;&#10;                &#60;/li&#62;&#10;            &#60;/ul&#62;&#10;&#10;            &#60;p id=&#34;total&#34;&#62;total: &#60;span&#62;${{total()}}&#60;/span&#62;&#60;/p&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/services/script.js</h2>
+          <pre>
+            <code class="language-javascript">
+              function myservices($scope){&#10;    $scope.<span style="background-color:yellow;padding:2px">services</span>=[&#10;        { title: &#39;web development&#39;, price: 200},&#10;        { title: &#39;web design&#39;, price: 250},&#10;        { title: &#39;photography&#39;, price: 100},&#10;        { title: &#39;coffee drinking&#39;, price: 10}];&#10;    $scope.total=function(){
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/services/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+                              &#60;!-- The services will be inserted here --&#62;&#10;                &#60;li ng-repeat=&#34;service in services&#34;&#62;&#10;                &#60;/li&#62;&#10;            &#60;/ul&#62;&#10;&#10;            &#60;p <span style="background-color:yellow;padding:2px">id=&#34;total&#34;&#62;</span>total: &#60;span&#62;${{total()}}&#60;/span&#62;&#60;/p&#62;&#10;&#10;            &#60;input type=&#34;submit&#34; id=&#34;order&#34; value=&#34;Order&#34;/&#62;&#10;&#10;        &#60;/form&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/services/script.js</h2>
+          <pre>
+            <code class="language-javascript">
+              $scope.services=[&#10;    { title: &#39;web development&#39;, price: 200},&#10;    { title: &#39;web design&#39;, price: 250},&#10;    { title: &#39;photography&#39;, price: 100},&#10;    { title: &#39;coffee drinking&#39;, price: 10}];&#10;$scope.<span style="background-color:yellow;padding:2px">total</span>=function(){&#10;    var t = 0;&#10;    angular.forEach($scope.services, function(s){&#10;        if(s.selected)&#10;            t+=s.price;&#10;    });
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+      <div class="row text-left">
+        <div class="col-md-6">
+          <h2> ./test/data/services/index.html</h2>
+          <pre>
+            <code class="language-html"}}>
+                              &#60;!-- The services will be inserted here --&#62;&#10;                &#60;li ng-repeat=&#34;service in services&#34;&#62;&#10;                &#60;/li&#62;&#10;            &#60;/ul&#62;&#10;&#10;            &#60;p id=&#34;total&#34;&#62;total: &#60;span&#62;${{<span style="background-color:yellow;padding:2px">total</span>()}}&#60;/span&#62;&#60;/p&#62;&#10;&#10;            &#60;input type=&#34;submit&#34; id=&#34;order&#34; value=&#34;Order&#34;/&#62;&#10;&#10;        &#60;/form&#62;
+            </code>
+          </pre>
+          <!-- &ltp&gt<span style="color:red">TEST</span>&lt/p&gt -->
+        </div>
+        <div class="col-md-6">
+          <h2> ./test/data/services/script.js</h2>
+          <pre>
+            <code class="language-javascript">
+              $scope.services=[&#10;    { title: &#39;web development&#39;, price: 200},&#10;    { title: &#39;web design&#39;, price: 250},&#10;    { title: &#39;photography&#39;, price: 100},&#10;    { title: &#39;coffee drinking&#39;, price: 10}];&#10;$scope.<span style="background-color:yellow;padding:2px">total</span>=function(){&#10;    var t = 0;&#10;    angular.forEach($scope.services, function(s){&#10;        if(s.selected)&#10;            t+=s.price;&#10;    });
+            </code>
+          </pre>
+        </div>
+      </div> <!-- end row -->
+      
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/highlight.pack.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+      $('pre code').each(function(i, e) {
+        console.log(e)
+        hljs.highlightBlock(e);
+      });
+    });
+    </script>
+  </body>
+</html>
