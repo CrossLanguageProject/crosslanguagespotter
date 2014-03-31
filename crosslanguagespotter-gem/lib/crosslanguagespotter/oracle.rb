@@ -3,8 +3,6 @@ require 'codemodels/js'
 require 'codemodels/html'
 require 'csv'
 require 'crosslanguagespotter/model_loading'
-#require 'console'
-#require 'code_processing'
 
 include CodeModels
 
@@ -41,6 +39,7 @@ class OracleLoader
         WekaClassifier.new(train_instances)
     end
 
+    # TODO Make it private
     def to_train_data(srcpath,oraclepath)
         project = Project.new(srcpath)
 
@@ -76,19 +75,6 @@ class OracleLoader
                 line_b         = values[5].to_i
                 col_b          = values[6].to_i         
                 surface_form_b = values[7]
-                #if values[8]=='t'
-                #    result = true
-                #elsif values[8]=='f'
-                #    result = false
-                #else
-                #    raise "Exptected true or false"
-                #end
-
-                #if oracle_values.values.include?([end_a,end_b])
-                #    raise "Line #{l+1} is a duplicate of line #{oracle_values.find {|k,v| v==[end_a,end_b]}}"
-                #else
-                #    oracle_values[l] = [end_a,end_b]
-                #end             
 
                 file_a = "#{srcpath}/#{file_a}"
                 file_b = "#{srcpath}/#{file_b}"
@@ -163,16 +149,6 @@ class OracleLoader
             end
         end
 
-        pos = 0
-        neg = 0
-        train_data.each do |k,v|
-            if v[:result]
-                pos+=1
-                #puts v
-            else
-                neg+=1
-            end
-        end
         return train_data
     end
 
@@ -220,7 +196,6 @@ class OracleLoader
             smallest_candidate = candidates_included_in_all_the_others(candidates_in_correct_position)
             unless smallest_candidate
                 puts "I did not find exactly once '#{surface_form}' at #{position}. I found it there #{candidates_in_correct_position.count} times (found elsewhere #{candidates_in_other_positions.count} times)"
-
 
                 candidates_in_other_positions.each do |wp|
                     puts " * #{wp.source.position(:absolute)}"

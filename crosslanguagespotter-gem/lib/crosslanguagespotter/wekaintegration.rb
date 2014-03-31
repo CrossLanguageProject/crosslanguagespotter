@@ -2,6 +2,9 @@ require 'java'
 
 module CrossLanguageSpotter
 
+# Initialize a RandomTree classifier using the given
+# instances
+# TODO make it a private method of WekaClassifier
 def build_classifier(training_instances)
     c = Java::weka::classifiers::trees::RandomTree.new
     c.build_classifier(training_instances)
@@ -19,7 +22,7 @@ class WekaClassifier
         data_instances.enumerate_instances.each do |instance|
             #puts "Classifying #{instance}"
             r = @weka_classifier.classify_instance(instance)
-            #puts "Result: #{r} #{instance}"
+            puts "Result: #{r} #{instance}"
             results.push({result: r==0.0, instance: instance})
         end
         return results
@@ -27,6 +30,7 @@ class WekaClassifier
 
 end
 
+# TODO: make it a private method of WekaClassifier
 def hash2weka_instances(name,data,keys,class_value)
     boolean_values = Java::weka::core::FastVector.new
     boolean_values.add_element("true")

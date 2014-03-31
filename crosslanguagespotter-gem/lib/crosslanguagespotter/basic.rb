@@ -72,6 +72,7 @@ module CrossLanguageSpotter
             i=0
             results = []
             classification.each do |c|                
+                puts "CLASSIFICATION #{c}"
                 if c[:result]
                     # just put a true in the real relations
                     list_of_original_features_rows[i][:result] = true

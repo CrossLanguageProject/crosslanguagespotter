@@ -7,7 +7,6 @@ module CrossLanguageSpotter
 
 AngularParser = CodeModels::Html::AngularJs.parser_considering_angular_embedded_code
 
-
 def traverse_index(node)
     root = node.root(:also_foreign)
     i = 1
