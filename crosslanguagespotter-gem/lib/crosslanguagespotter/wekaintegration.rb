@@ -76,6 +76,7 @@ def hash2weka_instances(name,data,keys,class_value)
     end
 
     if class_value
+        puts "Setting classIndex #{attributes_indexes[class_value]}"
         instances.setClassIndex(attributes_indexes[class_value])
     end
 

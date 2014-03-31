@@ -67,7 +67,9 @@ module CrossLanguageSpotter
                 context: :numeric,jaccard: :numeric,jaro: :numeric,tversky: :numeric,
                 result: :boolean}
             data_instances = hash2weka_instances("data",data,keys,:result)
+            puts "ARFF DATA BEFORE {{{\n#{data_instances}\n}}}"
             classification = classifier.classify(data_instances)
+            puts "ARFF DATA AFTER {{{\n#{data_instances}\n}}}"
 
             i=0
             results = []

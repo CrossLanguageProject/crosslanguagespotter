@@ -46,9 +46,7 @@ def _code(files_content,filename,begin_line,end_line,begin_col,end_col)
         code += HTMLEntities.new.encode(l,:decimal)
     end
     snippet_lines[:lines].each do |l|
-        #l = l.gsub("\t",'    ')
         code += HTMLEntities.new.encode(l[0...(begin_col-1)],:decimal)
-        puts "<<<#{l[(begin_col-1)...end_col]}>>>"
         code += '<span style="background-color:yellow;padding:2px">'+HTMLEntities.new.encode(l[(begin_col-1)...end_col],:decimal)+"</span>"
         code += HTMLEntities.new.encode(l[end_col..-1],:decimal)
     end
