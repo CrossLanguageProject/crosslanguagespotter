@@ -1,5 +1,6 @@
 require 'rake/testtask'
 require 'rubygems/tasks'
+require 'rake/gempackagetask'
 
 Rake::TestTask.new do |t|
   t.libs << 'test'
@@ -7,6 +8,15 @@ end
 
 Gem::Tasks.new do |tasks|
   tasks.console.command = 'jruby'
+end
+
+spec = Gem::Specification.load(Dir['*.gemspec'].first)
+gem = Rake::GemPackageTask.new(spec)
+gem.define
+
+desc "Push gem to rubygems.org"
+task :push => :gem do
+  sh "gem push #{gem.package_dir}/#{gem.gem_file}"
 end
 
 desc "Run tests"

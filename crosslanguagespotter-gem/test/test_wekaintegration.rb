@@ -38,7 +38,6 @@ def test_classify
     data_instances = hash2weka_instances('my_sample_dataset',@sample_data2,{a: :numeric, b: :numeric, c: :boolean},:c)
     classifier = WekaClassifier.new(train_instances)
     results = classifier.classify(data_instances)
-    puts "Results: #{results}"
 end
 
 end
