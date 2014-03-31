@@ -9,11 +9,9 @@ require 'liquid'
 module CrossLanguageSpotter
 
 def _language_from_filename(filename)
-    if filename.end_with?('.html')
-        'html'
-    else
-        'javascript'
-    end
+    l = CodeModels.registered_languages.find {|l| l.can_parse?(filename) }
+    return l.name.downcase if l
+    nil
 end
 
 def generate_report_file(relations,output)
