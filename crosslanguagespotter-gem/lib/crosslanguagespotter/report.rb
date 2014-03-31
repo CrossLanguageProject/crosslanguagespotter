@@ -57,13 +57,13 @@ def _code(files_content,filename,begin_line,end_line,begin_col,end_col)
     code
 end
 
-def _get_snippet_lines(lines,line_index)   
+def _get_snippet_lines(lines,start_line_index,end_line_index=start_line_index)
     around = 5
-    start_line = [0,line_index-5].max
-    end_line   = [lines.count-1,line_index+5].min
-    before = lines[start_line...line_index]
-    sel_lines  = [lines[line_index]]
-    after  = lines[(line_index+1)..(end_line)]
+    start_line = [0,start_line_index-5].max
+    end_line   = [lines.count-1,end_line_index+5].min
+    before = lines[start_line...start_line_index]
+    sel_lines  = lines[start_line_index..end_line_index]
+    after  = lines[(end_line_index+1)..(end_line)]
     {before:before,lines:sel_lines,after:after}
 end
 
