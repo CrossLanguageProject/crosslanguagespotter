@@ -1,5 +1,66 @@
 require 'test_helper'
 
+class TestJaro < Test::Unit::TestCase
+
+	def test_array_select_with_index
+		a = [1,2,3,4,5,6,6,8,9]
+		assert_equal [2,4,6,6,8], a.select_with_index {|x,i| x.even? }
+	end
+
+	def test_array_indices_of_value
+		a = [1,2,3,4,5,6,6,8,9]
+		assert_equal [1], a.indices_of_value(2)
+		assert_equal [5,6], a.indices_of_value(6)
+	end
+
+	def test_jaro_matching_distance
+		jrp = JaroReferencesProducer.new
+		assert_equal 2,jrp._matching_distance("MARTHA".split(//),"MARHTA".split(//))
+		assert_equal 1,jrp._matching_distance("CRATE".split(//),"TRACE".split(//))
+		assert_equal 2,jrp._matching_distance("DWAYNE".split(//),"DUANE".split(//))
+	end
+
+	def test_jaro_matching
+		jrp = JaroReferencesProducer.new
+		assert_equal 6,jrp.matching("MARTHA".split(//),"MARHTA".split(//))
+		assert_equal 3,jrp.matching("CRATE".split(//),"TRACE".split(//))
+		assert_equal 4,jrp.matching("DWAYNE".split(//),"DUANE".split(//))
+	end
+
+	def test_length_of_winkler_prefix
+		jrp = JaroReferencesProducer.new
+		assert_equal 3,jrp._length_of_winkler_prefix("CIAO","CIAO")
+		assert_equal 2,jrp._length_of_winkler_prefix("AB","ABCD")
+		assert_equal 2,jrp._length_of_winkler_prefix("ABCD","AB")
+		assert_equal 0,jrp._length_of_winkler_prefix("ABCD","BCD")
+	end
+
+	def test_jaro_transpositions
+		jrp = JaroReferencesProducer.new
+		assert_equal 0,jrp.transpositions("DwAyNE".split(//),"DuANE".split(//))
+		assert_equal 2,jrp.transpositions("MARTHA".split(//),"MARHTA".split(//))
+		assert_equal 0,jrp.transpositions("CRATE".split(//),"TRACE".split(//))
+		assert_equal 0,jrp.transpositions("DWAYNE".split(//),"DUANE".split(//))
+	end
+
+	def test_jaro_coefficient
+		jrp = JaroReferencesProducer.new
+		assert_equal 0.0,jrp.jaro_coefficient("ciao".split(//),"qwer".split(//)) # all characters different
+		assert_in_delta 0.944,jrp.jaro_coefficient("MARTHA".split(//),"MARHTA".split(//)), 0.01
+		assert_in_delta 0.822,jrp.jaro_coefficient("DWAYNE".split(//),"DUANE".split(//)), 0.01
+		assert_in_delta 0.767,jrp.jaro_coefficient("DIXON".split(//),"DICKSONX".split(//)), 0.01
+	end
+
+	def test_jaro_coefficient_with_winkler
+		jrp = JaroReferencesProducer.new(winkleradjust:true)
+		assert_equal 0.0,jrp.jaro_coefficient("ciao".split(//),"qwer".split(//)) # all characters different
+		assert_in_delta 0.9608,jrp.jaro_coefficient("MARTHA".split(//),"MARHTA".split(//)), 0.01
+		assert_in_delta 0.84,jrp.jaro_coefficient("DWAYNE".split(//),"DUANE".split(//)), 0.01
+		assert_in_delta 0.813,jrp.jaro_coefficient("DIXON".split(//),"DICKSONX".split(//)), 0.01
+	end	
+
+end
+
 class TestTversky < Test::Unit::TestCase
 
 class DummyShared

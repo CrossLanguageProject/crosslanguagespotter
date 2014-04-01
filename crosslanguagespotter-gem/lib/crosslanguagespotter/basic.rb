@@ -8,10 +8,10 @@ require 'crosslanguagespotter/figures_evaluator'
 require 'crosslanguagespotter/methods/context'
 require 'crosslanguagespotter/methods/tversky'
 require 'crosslanguagespotter/methods/jaro'
+require 'crosslanguagespotter/methods/jaccard'
 require 'crosslanguagespotter/model_loading'
 require 'csv'
 require 'set'
-require 'crosslanguagespotter/jaccard'
 
 module CrossLanguageSpotter
 

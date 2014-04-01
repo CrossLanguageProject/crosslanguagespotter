@@ -1,14 +1,10 @@
-require 'set'
-require 'crosslanguagespotter/jaccard'
-require 'crosslanguagespotter/figures_evaluator'
-
 module CrossLanguageSpotter
 
 class TverskyReferencesProducer
 
     attr_accessor :verbose
 
-    def initialize(parameters)
+    def initialize(parameters={})
         @threshold = parameters[:threshold] || 0.5
         @alpha     = parameters[:alpha]     || 1.0
         @beta      = parameters[:beta]      || 1.0

@@ -2,6 +2,7 @@ require 'set'
 require 'crosslanguagespotter/figures_evaluator'
 
 class Array
+
     # select array items with index
     # give a block both the item with index of array
     # filtered by a select statement
@@ -12,12 +13,14 @@ class Array
 
     # return indices array of array item
     # example all indices of a in string "aaabaaabba"
-    def aindices(o)
+    def indices_of_value(value)
         out = Array.new
-        select_with_index { |x, i|
-        out << i if x == o }
+        select_with_index do |x, i|
+            out << i if x == value
+        end
         out
     end
+
 end
 
 module CrossLanguageSpotter
@@ -26,10 +29,12 @@ class JaroReferencesProducer
 
     attr_accessor :verbose
 
-    def initialize(parameters)
-        @threshold = parameters[:threshold]
-        @verbose = parameters[:verbose]
-        @winkleradjust = parameters[:winkleradjust]
+    def initialize(parameters={})
+        @threshold              = parameters[:threshold]     || 0.5
+        @verbose                = parameters[:verbose]       || false
+        @winkleradjust          = parameters[:winkleradjust] || false
+        @winkler_scaling_factor = 0.1
+        @winkler_max_prefix     = 3
     end
 
     # It should produce a set of node ids
@@ -61,44 +66,96 @@ class JaroReferencesProducer
         jaro_coefficient(s1,s2) 
     end
 
-    def jaro_coefficient(s1,s2)
-        # if strings (without trailing & leadning spaces) are equal - return 1
-        #return 1 if str1.strip==str2.strip
-        # either string blank - return 0
-        #return 0 if str1.size==0 or str2.size==0
-        m = 0 # number of matching chars
-        tr = 0 # number of transpositions
+    def matching(s1,s2)
+        _matching_and_transpositions(s1,s2)[:m]
+    end
 
-        # get character array length
+    def transpositions(s1,s2)
+        _matching_and_transpositions(s1,s2)[:tr]
+    end
+
+    def _matching_distance(s1,s2)
         s1l = s1.length
         s2l = s2.length
-        # str2 should be the longer string
-        if s1l > s2l
-            s1, s2 = s2, s1
-        end
-        # hash from all unique str2 chars + occurances
-        # example 'aba': hash={ a => 0, b => 0 } a: first occurance, b first occurance
-        # if the first a was visited: { a => 1, b => 0} a: second occuance, b second occurance
-        found = Hash[*s2.uniq.sort.collect {|v| [v,0]}.flatten]
-        # matching distance definition
         md = (([s1l,s2l].max / 2) - 1).to_i
-        s1.each_with_index do |c,i|
-            # find number of matching chars
-            if !found[c].nil? # character exists in str2
-                # calculates distance between 2 matching characters compare with md
-                if !s2.aindices(c)[found[c]].nil?
-                    x = (s2.aindices(c)[found[c]] - i).abs
-                    if x <= md
-                        found[c] += 1 # increase occurance of character
-                        m += 1 # increase number of matching characters
-                        # transpositions?
-                        if (x != 0)
-                            tr += 1
-                        end
-                    end
+        return 0 if md<0
+        md
+    end
+
+    def _matching_and_transpositions(s1,s2)
+        return _matching_and_transpositions(s2,s1) if s1.length>s2.length
+
+        s1l = s1.length
+        s2l = s2.length
+        return {m:0,tr:0} if s1l==0 or s2l==0
+       
+        # matching distance definition
+        md = _matching_distance(s1,s2)
+        
+        matchIndexes = Array.new(s1l,-1)
+        matchFlags   = Array.new(s2l,false)
+        matches = 0;
+
+        s1l.times do |mi|
+            c1 = s1[mi]
+            xb = [mi-md,0].max
+            xe = [mi+md+1,s2l].min
+            done = false
+            (xb...xe).each do |xi|            
+                if !done && !matchFlags[xi] && c1 == s2[xi]
+                  matchIndexes[mi] = xi
+                  matchFlags[xi] = true
+                  matches+=1
+                  done = true
                 end
             end
         end
+
+        ms1 = Array.new matches
+        ms2 = Array.new matches
+        
+        si = 0
+        s1l.times do |i|
+            if matchIndexes[i] != -1
+                ms1[si] = s1[i]
+                si+=1
+            end
+        end
+
+        si = 0
+        s2l.times do |i|
+            if matchFlags[i]
+                ms2[si] = s2[i]
+                si+=1
+            end
+        end
+
+        transpositions = 0
+        s1l.times do |mi|
+            transpositions+=1 if ms1[mi] != ms2[mi]
+        end
+
+        {m:matches,tr:transpositions}   
+    end
+
+    def _length_of_winkler_prefix(s1,s2)
+        return _length_of_winkler_prefix(s2,s1) if s1.length>s2.length
+        l = 0
+        (0..s1.length-1).each { |i| s1[i]==s2[i] ? l+=1 : break }
+        [l,@winkler_max_prefix].min
+    end
+
+    def jaro_coefficient(s1,s2)
+        return jaro_coefficient(s2,s1) if s1.length>s2.length
+        s1l = s1.length
+        s2l = s2.length
+        
+        h  = _matching_and_transpositions(s1,s2)
+        m  = h[:m]
+        tr = h[:tr]
+        
+        return 0.0 unless m>0
+        
         tr = (tr/2).to_i
         # calc jaro-distance
         third = 1.0/3
@@ -106,9 +163,9 @@ class JaroReferencesProducer
         out = jd
         # winkleradjust? if first l characters are the same
         if @winkleradjust
-            l = 0
-            (0..s1l-1).each { |i| s1[i]==s2[i] ? l+=1 : break }
-            out = jd + (l * 0.1 * (1 - jd))
+            puts "ADJUST FOR #{s1} vs #{s2}"
+            l = _length_of_winkler_prefix(s1,s2)
+            out = jd + (l * @winkler_scaling_factor * (1.0 - jd))
         end
         out
     end
