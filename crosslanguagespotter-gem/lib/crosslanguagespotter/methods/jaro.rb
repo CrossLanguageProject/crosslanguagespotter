@@ -37,24 +37,10 @@ class JaroReferencesProducer
         @winkler_max_prefix     = 3
     end
 
-    # It should produce a set of node ids
-    def produce_set(project)
-        set = Set.new
-        puts "Jaro method:" if @verbose
-
-        block1 = Proc.new do |ni,nj|
-            context_ni = context(ni).sequence_of_values.map{|v| v.to_s}
-            context_nj = context(nj).sequence_of_values.map{|v| v.to_s}
-            if jaro_coefficient(context_ni,context_nj)>@threshold
-                id_i = NodeId.from_node(ni)
-                id_j = NodeId.from_node(nj)
-                set << CrossLanguageRelation.new([id_i,id_j])
-            end
-        end     
-        project.iter_over_shared_ids_instances {|ni,nj| block1.call(ni,nj) }                
-        puts "Jaro method, set produced: #{set.count} elements" if @verbose
-        set
-    end
+    def related?(context_ni,context_nj)
+        j = jaro_coefficient(context_ni,context_nj)
+        j>=@threshold
+    end    
 
     def jaro_coefficient_from_nodes(ni,nj)
         jaro_coefficient_from_context(context(ni),context(nj))
@@ -163,7 +149,6 @@ class JaroReferencesProducer
         out = jd
         # winkleradjust? if first l characters are the same
         if @winkleradjust
-            puts "ADJUST FOR #{s1} vs #{s2}"
             l = _length_of_winkler_prefix(s1,s2)
             out = jd + (l * @winkler_scaling_factor * (1.0 - jd))
         end
