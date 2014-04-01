@@ -6,7 +6,22 @@ class CrossLanguageReferencesProducer
     end
 
     # It should produce a set of CrossLanguageRelation
-    def produce_set(project)
+    def produce_set(project, method_name)
+        set = Set.new
+        puts "#{method_name} method:" if @verbose
+        block = Proc.new do |ni,nj|
+            context_ni = context(ni).values & project.shared_ids
+            context_nj = context(nj).values & project.shared_ids 
+            if related?(context_ni,context_nj)
+                id_i = NodeId.from_node(ni)
+                id_j = NodeId.from_node(nj)
+                puts " * '#{id_i.file}':#{id_i.index} -> '#{id_j.file}':#{id_j.index}" if @verbose
+                set << CrossLanguageRelation.new([id_i,id_j])
+            end
+        end     
+        project.iter_over_shared_ids_instances {|ni,nj| block.call(ni,nj) }     
+        puts "#{method_name} method, set produced: #{set.count} elements" if @verbose
+        set        
     end
 
 end
