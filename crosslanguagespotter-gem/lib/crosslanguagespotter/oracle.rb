@@ -36,7 +36,21 @@ class OracleLoader
             result: :boolean
         }
         train_instances = hash2weka_instances("oracle",data,keys,:result)
-        WekaClassifier.new(train_instances)
+        train_instances.sort(0)
+        train_instances.sort(1)
+        train_instances.sort(2)
+        train_instances.sort(3)
+        train_instances.sort(4)
+        train_instances.sort(5)
+        train_instances.sort(6)
+	train_instances.sort(7)
+	train_instances.sort(8)
+	train_instances.sort(9)
+	train_instances.sort(10)
+	train_instances.sort(11)
+	train_instances.sort(12)
+	puts "TRAINING {{{\n#{train_instances.to_s}}}\n"
+	WekaClassifier.new(train_instances)
     end
 
     # TODO Make it private
