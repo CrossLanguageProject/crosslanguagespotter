@@ -37,6 +37,7 @@ def generate_report_file(relations,output)
     File.open(output, 'w') {|f| f.write(template.render({"relations"=>data})) }
 end
 
+# Use a block and the escape filter in the liquid template
 def _code(files_content,filename,begin_line,end_line,begin_col,end_col)
     code = ""
     snippet_lines = _get_snippet_lines(files_content[filename],begin_line)

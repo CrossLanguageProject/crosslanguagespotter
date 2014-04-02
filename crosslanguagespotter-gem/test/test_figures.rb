@@ -146,4 +146,11 @@ def test_jaccard_best_match
 	assert_equal([[1, 2, 3], [1, 2]], Jaccard.best_match([a, b, c]) )
 end
 
+def test_jaccard_closest_to
+	a = [1, 2, 3]
+	b = [1, 3]
+	c = [1, 2, 3]
+	assert_equal(c, Jaccard.closest_to(b,[a, c]) )	
+end
+
 end
